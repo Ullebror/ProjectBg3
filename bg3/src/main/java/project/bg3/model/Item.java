@@ -10,7 +10,7 @@ public class Item {
 		super();
 	}
 
-	public Item(String name, String description) {
+	public Item(String name, String description, String rarity) {
 		super();
 		this.name = name;
 		this.description = description;
@@ -27,7 +27,7 @@ public class Item {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public String getRarity() {
 		return rarity;
 	}
@@ -39,7 +39,7 @@ public class Item {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 	public void setRarity(String rarity) {
 		this.rarity = rarity;
 	}

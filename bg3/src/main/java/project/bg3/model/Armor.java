@@ -2,6 +2,7 @@ package project.bg3.model;
 
 public class Armor extends Item {
 	private int ac;
+	private String dexBonus;
 	private String stealth;
 	private String type;
 
@@ -9,14 +10,22 @@ public class Armor extends Item {
 		super();
 	}
 
-	public Armor(int ac, String stealth, String type) {
+	public Armor(String name, String description, String rarity, int ac, String dexBonus, String stealth, String type) {
+		this.name = name;
+		this.description = description;
+		this.rarity = rarity;
 		this.ac = ac;
 		this.stealth = stealth;
 		this.type = type;
+		this.dexBonus = dexBonus;
 	}
 
 	public int getAc() {
 		return ac;
+	}
+
+	public String getDexBonus() {
+		return dexBonus;
 	}
 
 	public String getStealth() {
@@ -31,6 +40,10 @@ public class Armor extends Item {
 		this.ac = ac;
 	}
 
+	public void setAttribute(String dexBonus) {
+		this.dexBonus = dexBonus;
+	}
+
 	public void setStealth(String stealth) {
 		this.stealth = stealth;
 	}
@@ -41,6 +54,7 @@ public class Armor extends Item {
 
 	@Override
 	public String toString() {
-		return "Armor [id=" + id + ", name=" + name + ", description=" + description + ", rarity=" + rarity + ", ac=" + ac + ", stealthdisadv=" + stealth + ", type=" + type + "]";
+		return "Armor [id=" + id + ", name=" + name + ", description=" + description + ", rarity=" + rarity + ", ac="
+				+ ac + ", attribute=" + dexBonus + ", stealthdisadv=" + stealth + ", type=" + type + "]";
 	}
 }
