@@ -14,9 +14,13 @@ public class Weapon extends Item {
 		super();
 	}
 
-	public Weapon(String name, String description, String rarity, String damage, String damageType, String type, String attribute, String extra) {
+	public Weapon(String name, String description1, String description2, String description3,  String description4, String rarity,
+			String damage, String damageType, String type, String attribute, String extra) {
 		this.name = name;
-		this.description = description;
+		this.description1 = description1;
+		this.description2 = description2;
+		this.description3 = description3;
+		this.description4 = description4;
 		this.rarity = rarity;
 		this.damage = damage;
 		this.damageType = damageType;
@@ -67,8 +71,9 @@ public class Weapon extends Item {
 
 	@Override
 	public String toString() {
-		return "Weapon [id=" + id + ", name=" + name + ", description" + description + ", rarity=" + rarity + "damage="
-				+ damage + ", damageType=" + damageType + ", type=" + type + ", attribute=" + attribute + ", extra="
-				+ extra + "]";
+		return "Weapon [id=" + id + ", name=" + name + ", description1=" + description1 + ", description2="
+				+ description2 + ", description3=" + description3 + ", description4=" + description4 + ", rarity=" + rarity + "damage=" + damage
+				+ ", damageType=" + damageType + ", type=" + type + ", attribute=" + attribute + ", extra=" + extra
+				+ "]";
 	}
 }

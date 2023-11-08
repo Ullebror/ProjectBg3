@@ -1,10 +1,82 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <title>Itemlist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+	<h3>Baldur's Gate 3 Armour and Weapons</h3>
+
+	<p>
+		This page is for cataloguing the Armour and Weapons of Baldur's Gate 3
+		<br /> This first page shows both the Armour and Weapons in their own
+		tables
+	</p>
+	<a th:href="@{/weaponlist}">Weapons</a> <a th:href="@{/armorlist}">Armours</a>
+	<table class="table table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Armour Class</th>
+			<th>Dex bonus</th>
+			<th>Rarity</th>
+			<th>Stealth disadv</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+		<tr th:each="armor : ${armors}">
+			<td th:text="${armor.name}"></td>
+			<td th:text="${armor.ac}"></td>
+			<td th:text="${armor.dexBonus}"></td>
+			<td th:text="${armor.rarity}"></td>
+			<td th:text="${armor.stealth}"></td>
+			<td th:text="${armor.type}"></td>
+			<td>
+				<p th:text="${armor.description1}"></p>
+				<p th:text="${armor.description2}"></p>
+				<p th:text="${armor.description3}"></p>
+				<p th:text="${armor.description4}"></p>
+			</td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/delete/{id}(id=${armor.id})}" class="btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/edit/{id}(id=${armor.id})}">Edit</a></td>
+		</tr>
+	</table>
+
+	<p></p>
+
+	<table class="table table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Damage</th>
+			<th>Damage type</th>
+			<th>extra</th>
+			<th>Attribute</th>
+			<th>Rarity</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+		<tr th:each="weapon : ${weapons}">
+			<td th:text="${weapon.name}"></td>
+			<td th:text="${weapon.damage}"></td>
+			<td th:text="${weapon.damageType}"></td>
+			<td th:text="${weapon.extra}"></td>
+			<td th:text="${weapon.attribute}"></td>
+			<td th:text="${weapon.rarity}"></td>
+			<td th:text="${weapon.type}"></td>
+			<td>
+				<p th:text="${weapon.description1}"></p>
+				<p th:text="${weapon.description2}"></p>
+				<p th:text="${weapon.description3}"></p>
+				<p th:text="${weapon.description4}"></p>
+			</td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/delete/{id}(id=${weapon.id})}" class="btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/edit/{id}(id=${weapon.id})}">Edit</a></td>
+		</tr>
+	</table>
 
 
 </body>

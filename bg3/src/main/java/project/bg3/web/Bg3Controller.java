@@ -26,6 +26,8 @@ public class Bg3Controller {
 	@RequestMapping(value = { "/", "/itemlist" })
 	public String itemList(Model model) {
 		model.addAttribute("items", irepository.findAll());
+		model.addAttribute("armors", arepository.findAll());
+		model.addAttribute("weapons", wrepository.findAll());
 		return "itemlist";
 	}
 

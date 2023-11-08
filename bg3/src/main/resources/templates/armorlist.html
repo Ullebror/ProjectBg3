@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <title>Armorlist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,7 +9,7 @@
 	<table class="table table-striped">
 		<tr>
 			<th>Name</th>
-			<th>Armor Class</th>
+			<th>Armour Class</th>
 			<th>Dex bonus</th>
 			<th>Rarity</th>
 			<th>Stealth disadv</th>
@@ -22,11 +23,16 @@
 			<td th:text="${armor.rarity}"></td>
 			<td th:text="${armor.stealth}"></td>
 			<td th:text="${armor.type}"></td>
-			<td th:text="${armor.description}"></td>
+			<td >
+				<p th:text="${armor.description1}"></p>
+				<p th:text="${armor.description2}"></p>
+				<p th:text="${armor.description3}"></p>
+				<p th:text="${armor.description4}"></p>
+			</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/delete/{id}(id=${book.id})}" class="btn-danger">Delete</a></td>
+				th:href="@{/delete/{id}(id=${armor.id})}" class="btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
+				th:href="@{/edit/{id}(id=${armor.id})}">Edit</a></td>
 		</tr>
 	</table>
 

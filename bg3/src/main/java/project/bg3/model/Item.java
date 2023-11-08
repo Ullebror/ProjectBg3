@@ -7,22 +7,27 @@ import jakarta.persistence.Id;
 
 @Entity
 public class Item {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 	protected String name;
-	protected String description;
+	protected String description1;
+	protected String description2;
+	protected String description3;
+	protected String description4;
 	public String rarity;
 
 	public Item() {
 		super();
 	}
 
-	public Item(String name, String description, String rarity) {
+	public Item(String name, String description1, String description2, String description3, String description4, String rarity) {
 		super();
 		this.name = name;
-		this.description = description;
+		this.description1 = description1;
+		this.description2 = description2;
+		this.description3 = description3;
 	}
 
 	public Long getId() {
@@ -33,8 +38,20 @@ public class Item {
 		return name;
 	}
 
-	public String getDescription() {
-		return description;
+	public String getDescription1() {
+		return description1;
+	}
+
+	public String getDescription2() {
+		return description2;
+	}
+
+	public String getDescription3() {
+		return description3;
+	}
+	
+	public String getDescription4() {
+		return description4;
 	}
 
 	public String getRarity() {
@@ -45,8 +62,20 @@ public class Item {
 		this.name = name;
 	}
 
-	public void setDescription(String description) {
-		this.description = description;
+	public void setDescription1(String description1) {
+		this.description1 = description1;
+	}
+
+	public void setDescription2(String description2) {
+		this.description2 = description2;
+	}
+
+	public void setDescription3(String description3) {
+		this.description3 = description3;
+	}
+	
+	public void setDescription4(String description4) {
+		this.description4 = description4;
 	}
 
 	public void setRarity(String rarity) {
@@ -55,7 +84,8 @@ public class Item {
 
 	@Override
 	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", description=" + description + ", rarity=" + rarity + "]";
+		return "Item [id=" + id + ", name=" + name + ", description1=" + description1 + ", description2=" + description2
+				+ ", description3=" + description3 + ", description4=" + description4 + ", rarity=" + rarity + "]";
 	}
 
 }

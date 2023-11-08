@@ -13,9 +13,13 @@ public class Armor extends Item {
 		super();
 	}
 
-	public Armor(String name, String description, String rarity, int ac, String dexBonus, String stealth, String type) {
+	public Armor(String name, String description1, String description2, String description3, String description4, String rarity, int ac,
+			String dexBonus, String stealth, String type) {
 		this.name = name;
-		this.description = description;
+		this.description1 = description1;
+		this.description2 = description2;
+		this.description3 = description3;
+		this.description4 = description4;
 		this.rarity = rarity;
 		this.ac = ac;
 		this.stealth = stealth;
@@ -57,7 +61,8 @@ public class Armor extends Item {
 
 	@Override
 	public String toString() {
-		return "Armor [id=" + id + ", name=" + name + ", description=" + description + ", rarity=" + rarity + ", ac="
-				+ ac + ", attribute=" + dexBonus + ", stealthdisadv=" + stealth + ", type=" + type + "]";
+		return "Armor [id=" + id + ", name=" + name + ", description1=" + description1 + ", description2="
+				+ description2 + ", description3=" + description3 + ", description4=" + description4 + ", rarity=" + rarity + ", ac=" + ac + ", attribute="
+				+ dexBonus + ", stealthdisadv=" + stealth + ", type=" + type + "]";
 	}
 }

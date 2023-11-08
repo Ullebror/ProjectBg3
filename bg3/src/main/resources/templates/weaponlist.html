@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <title>Weaponlist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -24,11 +25,17 @@
 			<td th:text="${weapon.attribute}"></td>
 			<td th:text="${weapon.rarity}"></td>
 			<td th:text="${weapon.type}"></td>
-			<td th:text="${weapon.description}"></td>
+			<td>
+				<p th:text="${weapon.description1}"></p>
+				<p th:text="${weapon.description2}"></p>
+				<p th:text="${weapon.description3}"></p>
+				<p th:text="${weapon.description4}"></p>
+			</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/delete/{id}(id=${book.id})}" class="btn-danger">Delete</a></td>
+				th:href="@{/delete/{id}(id=${weapon.id})}" class="btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
+				th:href="@{/edit/{id}(id=${weapon.id})}">Edit</a></td>
 		</tr>
+	</table>
 </body>
 </html>
