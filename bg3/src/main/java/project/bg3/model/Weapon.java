@@ -1,5 +1,8 @@
 package project.bg3.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Weapon extends Item {
 	private String damage;
 	private String damageType;

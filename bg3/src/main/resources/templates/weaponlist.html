@@ -5,7 +5,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-
-
+	<table class="table table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Damage</th>
+			<th>Damage type</th>
+			<th>extra</th>
+			<th>Attribute</th>
+			<th>Rarity</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+		<tr th:each="weapon : ${weapons}">
+			<td th:text="${weapon.name}"></td>
+			<td th:text="${weapon.damage}"></td>
+			<td th:text="${weapon.damageType}"></td>
+			<td th:text="${weapon.extra}"></td>
+			<td th:text="${weapon.attribute}"></td>
+			<td th:text="${weapon.rarity}"></td>
+			<td th:text="${weapon.type}"></td>
+			<td th:text="${weapon.description}"></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/delete/{id}(id=${book.id})}" class="btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
+		</tr>
 </body>
 </html>

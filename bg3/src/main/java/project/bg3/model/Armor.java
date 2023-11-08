@@ -1,5 +1,8 @@
 package project.bg3.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Armor extends Item {
 	private int ac;
 	private String dexBonus;

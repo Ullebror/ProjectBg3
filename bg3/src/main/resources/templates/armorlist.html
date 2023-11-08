@@ -5,6 +5,30 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+	<table class="table table-striped">
+		<tr>
+			<th>Name</th>
+			<th>Armor Class</th>
+			<th>Dex bonus</th>
+			<th>Rarity</th>
+			<th>Stealth disadv</th>
+			<th>Type</th>
+			<th>Description</th>
+		</tr>
+		<tr th:each="armor : ${armors}">
+			<td th:text="${armor.name}"></td>
+			<td th:text="${armor.ac}"></td>
+			<td th:text="${armor.dexbonus}"></td>
+			<td th:text="${armor.rarity}"></td>
+			<td th:text="${armor.stealth}"></td>
+			<td th:text="${armor.type}"></td>
+			<td th:text="${armor.description}"></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/delete/{id}(id=${book.id})}" class="btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/edit/{id}(id=${book.id})}">Edit</a></td>
+		</tr>
+	</table>
 
 
 </body>

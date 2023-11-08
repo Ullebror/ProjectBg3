@@ -17,23 +17,28 @@ public class Bg3Controller {
 	private WeaponRepository wrepository;
 	@Autowired
 	private ArmorRepository arepository;
-	
-	@RequestMapping(value = {"/", "/itemlist"})
+
+	@RequestMapping(value = "/login")
+	public String login() {
+		return "login";
+	}
+
+	@RequestMapping(value = { "/", "/itemlist" })
 	public String itemList(Model model) {
 		model.addAttribute("items", irepository.findAll());
 		return "itemlist";
 	}
-	
-	@RequestMapping(value = {"/weaponlist"})
+
+	@RequestMapping(value = { "/weaponlist" })
 	public String weaponList(Model model) {
 		model.addAttribute("weapons", wrepository.findAll());
 		return "weaponlist";
 	}
-	
-	@RequestMapping(value = {"/armorlist"})
+
+	@RequestMapping(value = { "/armorlist" })
 	public String armorList(Model model) {
 		model.addAttribute("armors", arepository.findAll());
 		return "armorlist";
 	}
-	
+
 }
