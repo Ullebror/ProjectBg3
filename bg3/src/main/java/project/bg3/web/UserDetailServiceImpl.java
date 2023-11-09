@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import project.bg3.model.AppUser;
 import project.bg3.model.AppUserRepository;
 
+//This is for authenticating and authorising users
 @Service
 public class UserDetailServiceImpl implements UserDetailsService  {
 	private final AppUserRepository repository;

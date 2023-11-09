@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <title>Weaponlist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
@@ -8,6 +9,11 @@
 	th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
+	<div>
+		<form th:action="@{/logout}" method="post">
+			<input type="submit" value="Sign Out" />
+		</form>
+	</div>
 	<table class="table table-striped">
 		<tr>
 			<th>Name</th>
