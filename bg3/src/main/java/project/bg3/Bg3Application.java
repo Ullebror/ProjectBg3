@@ -11,8 +11,7 @@ import project.bg3.model.AppUser;
 import project.bg3.model.AppUserRepository;
 import project.bg3.model.Armor;
 import project.bg3.model.ArmorRepository;
-import project.bg3.model.Item;
-import project.bg3.model.ItemRepository;
+//import project.bg3.model.ItemRepository;
 import project.bg3.model.Weapon;
 import project.bg3.model.WeaponRepository;
 
@@ -29,7 +28,7 @@ public class Bg3Application extends SpringBootServletInitializer {
 	}
 
 	@Bean
-	public CommandLineRunner bg3Demo(ArmorRepository arepository, ItemRepository irepository,
+	public CommandLineRunner bg3Demo(ArmorRepository arepository, 
 			AppUserRepository urepository, WeaponRepository wrepository) {
 		return (args) -> {
 

@@ -1,16 +1,17 @@
 package project.bg3.model;
 
-import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
-public class Item {
-
+//This is to map the superclass to subclasses weapon and armor without Item having a table for itself and it not being an entity.
+@MappedSuperclass
+public abstract class Item {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
+
 	protected String name;
 	protected String description1;
 	protected String description2;
@@ -29,7 +30,7 @@ public class Item {
 		this.description2 = description2;
 		this.description3 = description3;
 	}
-
+	
 	public Long getId() {
 		return id;
 	}
@@ -56,6 +57,10 @@ public class Item {
 
 	public String getRarity() {
 		return rarity;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public void setName(String name) {

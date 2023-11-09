@@ -2,8 +2,10 @@ package project.bg3.model;
 
 import jakarta.persistence.Entity;
 
+
 @Entity
 public class Weapon extends Item {
+	
 	private String damage;
 	private String damageType;
 	private String type;
@@ -16,6 +18,7 @@ public class Weapon extends Item {
 
 	public Weapon(String name, String description1, String description2, String description3,  String description4, String rarity,
 			String damage, String damageType, String type, String attribute, String extra) {
+		super();
 		this.name = name;
 		this.description1 = description1;
 		this.description2 = description2;
@@ -27,6 +30,14 @@ public class Weapon extends Item {
 		this.type = type;
 		this.attribute = attribute;
 		this.extra = extra;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getDamage() {

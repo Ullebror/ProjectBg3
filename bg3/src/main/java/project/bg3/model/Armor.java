@@ -2,8 +2,10 @@ package project.bg3.model;
 
 import jakarta.persistence.Entity;
 
+
 @Entity
 public class Armor extends Item {
+	
 	private int ac;
 	private String dexBonus;
 	private String stealth;
@@ -15,6 +17,7 @@ public class Armor extends Item {
 
 	public Armor(String name, String description1, String description2, String description3, String description4, String rarity, int ac,
 			String dexBonus, String stealth, String type) {
+		super();
 		this.name = name;
 		this.description1 = description1;
 		this.description2 = description2;
@@ -25,6 +28,14 @@ public class Armor extends Item {
 		this.stealth = stealth;
 		this.type = type;
 		this.dexBonus = dexBonus;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public int getAc() {
@@ -47,7 +58,7 @@ public class Armor extends Item {
 		this.ac = ac;
 	}
 
-	public void setAttribute(String dexBonus) {
+	public void setDexBonus(String dexBonus) {
 		this.dexBonus = dexBonus;
 	}
 

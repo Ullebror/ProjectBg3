@@ -4,6 +4,8 @@
 <head>
 <title>Itemlist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
 	<h3>Baldur's Gate 3 Armour and Weapons</h3>
@@ -38,9 +40,9 @@
 				<p th:text="${armor.description4}"></p>
 			</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/delete/{id}(id=${armor.id})}" class="btn-danger">Delete</a></td>
+				th:href="@{/deletearmor/{id}(id=${armor.id})}" class="btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/edit/{id}(id=${armor.id})}">Edit</a></td>
+				th:href="@{/editarmor/{id}(id=${armor.id})}">Edit</a></td>
 		</tr>
 	</table>
 
@@ -72,9 +74,9 @@
 				<p th:text="${weapon.description4}"></p>
 			</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/delete/{id}(id=${weapon.id})}" class="btn-danger">Delete</a></td>
+				th:href="@{/deleteweapon/{id}(id=${weapon.id})}" class="btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/edit/{id}(id=${weapon.id})}">Edit</a></td>
+				th:href="@{/editweapon/{id}(id=${weapon.id})}">Edit</a></td>
 		</tr>
 	</table>
 

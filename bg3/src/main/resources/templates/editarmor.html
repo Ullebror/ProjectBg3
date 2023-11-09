@@ -1,11 +1,49 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
 <head>
 <title>Edit Armour</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
+	th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
+	<h1>Edit Armour</h1>
+	<div>
+		<form th:object="${armor}" th:action="@{../savearmor}" action="#"
+			method="post">
+			<label for="id"></label> <input type="hidden" id="id"
+				class="form-control" th:field="*{id}" readonly="readonly" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="name">Name</label> <input type="text" id="name"
+				th:field="*{name}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="ac">Armour Class</label> <input type="text" id="ac"
+				th:field="*{ac}" />
+			<div style="clear: both; display: table; height: 10px;"></div>
+			<label for="Features">Features</label> <input size=100 type="text"
+				id="description1" th:field="*{description1}" /> <br /> <input
+				size=100 type="text" id="description2" th:field="*{description2}" />
+			<br /> <input size=100 type="text" id="description3"
+				th:field="*{description3}" /> <br /> <input size=100 type="text"
+				id="description4" th:field="*{description4}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="rarity">Rarity</label> <input type="text" id="rarity"
+				th:field="*{rarity}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="type">Type</label> <input type="text" id="type"
+				th:field="*{type}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="dexBonus">Dex Bonus</label> <input type="text"
+				id="dexBonus" th:field="*{dexBonus}" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="stealth">Stealth disadv</label><input type="text"
+				id="stealth" th:field="*{stealth}" /> <br /> <input type="submit"
+				value="Update" />
+
+		</form>
+	</div>
 
 </body>
 </html>
