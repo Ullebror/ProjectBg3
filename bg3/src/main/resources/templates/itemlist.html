@@ -9,23 +9,41 @@
 	th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
-	<div>
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" />
-		</form>
-	</div>
+	<nav
+		class="navbar bg-dark borderbottom navbar-expand-lg bg-body-tertiary"
+		data-bs-theme="dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/itemlist}">Home</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-link" th:href="@{/weaponlist}">Weapons</a> <a
+						class="nav-link" th:href="@{/armorlist}">Armour</a>
+				</div>
+				<div class="mx-auto">
+					<a sec:authorize="hasAuthority('ADMIN')" href="/addweapon"
+						class="btn btn-success">Add Weapon</a> <a
+						sec:authorize="hasAuthority('ADMIN')" href="/addarmor"
+						class="btn btn-success">Add Armour</a>
+				</div>
+				<div class="ml-auto mr-1">
+					<form class="ml-auto mr-1" th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
+
 	<h1>Baldur's Gate 3 Armour and Weapons</h1>
 
-	<p>
-		This page is for cataloguing the Armour and Weapons of Baldur's Gate 3
-		<br /> This first page shows both the Armour and Weapons in their own
-		tables
-	</p>
-	<a th:href="@{/weaponlist}">Weapons</a>
-	<a th:href="@{/armorlist}">Armours</a> <br/>
-	<a sec:authorize="hasAuthority('ADMIN')" href="/addweapon" class="btn btn-success">Add Weapon</a>
-	<a sec:authorize="hasAuthority('ADMIN')" href="/addarmor" class="btn btn-success">Add Armour</a>
-	<table class="table table-striped">
+	<h2>Armour</h2>
+	<table class="table table-bordered table-hover table-striped">
 		<tr>
 			<th>Name</th>
 			<th>Armour Class</th>
@@ -49,15 +67,18 @@
 				<p th:text="${armor.description4}"></p>
 			</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/deletearmor/{id}(id=${armor.id})}" class="btn-danger">Delete</a></td>
+				th:href="@{/deletearmor/{id}(id=${armor.id})}"
+				class="btn btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/editarmor/{id}(id=${armor.id})}">Edit</a></td>
+				th:href="@{/editarmor/{id}(id=${armor.id})}"
+				class="btn btn-outline-primary">Edit</a></td>
 		</tr>
 	</table>
 
-	<p></p>
+	<br />
 
-	<table class="table table-striped">
+	<h2>Weapons</h2>
+	<table class="table table-bordered table-hover table-striped">
 		<tr>
 			<th>Name</th>
 			<th>Damage</th>
@@ -83,9 +104,11 @@
 				<p th:text="${weapon.description4}"></p>
 			</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/deleteweapon/{id}(id=${weapon.id})}" class="btn-danger">Delete</a></td>
+				th:href="@{/deleteweapon/{id}(id=${weapon.id})}"
+				class="btn btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/editweapon/{id}(id=${weapon.id})}">Edit</a></td>
+				th:href="@{/editweapon/{id}(id=${weapon.id})}"
+				class="btn btn-outline-primary">Edit</a></td>
 		</tr>
 	</table>
 

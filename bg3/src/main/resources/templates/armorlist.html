@@ -9,11 +9,34 @@
 	th:href="@{/css/bootstrap.min.css}" />
 </head>
 <body>
-	<div>
-		<form th:action="@{/logout}" method="post">
-			<input type="submit" value="Sign Out" />
-		</form>
-	</div>
+	<nav
+		class="navbar bg-dark borderbottom navbar-expand-lg bg-body-tertiary"
+		data-bs-theme="dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/itemlist}">Home</a>
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-link" th:href="@{/weaponlist}">Weapons</a> <a
+						class="nav-link" th:href="@{/armorlist}">Armour</a>
+				</div>
+				<div class="mx-auto">
+					<a sec:authorize="hasAuthority('ADMIN')" href="/addarmor"
+						class="btn btn-success">Add Armour</a>
+				</div>
+				<div class="ml-auto mr-1">
+					<form class="ml-auto mr-1" th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
 	<h1>Baldur's Gate 3 Armours</h1>
 	<table class="table table-striped">
 		<tr>
@@ -28,7 +51,7 @@
 		<tr th:each="armor : ${armors}">
 			<td th:text="${armor.name}"></td>
 			<td th:text="${armor.ac}"></td>
-			<td th:text="${armor.dexbonus}"></td>
+			<td th:text="${armor.dexBonus}"></td>
 			<td th:text="${armor.rarity}"></td>
 			<td th:text="${armor.stealth}"></td>
 			<td th:text="${armor.type}"></td>
