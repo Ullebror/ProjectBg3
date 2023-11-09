@@ -22,7 +22,9 @@
 		tables
 	</p>
 	<a th:href="@{/weaponlist}">Weapons</a>
-	<a th:href="@{/armorlist}">Armours</a>
+	<a th:href="@{/armorlist}">Armours</a> <br/>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/addweapon" class="btn btn-success">Add Weapon</a>
+	<a sec:authorize="hasAuthority('ADMIN')" href="/addarmor" class="btn btn-success">Add Armour</a>
 	<table class="table table-striped">
 		<tr>
 			<th>Name</th>
