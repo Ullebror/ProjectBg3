@@ -7,6 +7,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
+//User entity, needs to be like this to work.
 @Entity
 @Table(name = "UserTable")
 public class AppUser {
