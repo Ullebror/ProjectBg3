@@ -10,7 +10,7 @@
 <link type="text/css" rel="stylesheet" href="/css/Basic.css"
 	th:href="@{/css/Basic.css}" />
 </head>
-<body>
+<body class="bg-dark text-white" >
 	<nav
 		class="navbar bg-dark borderbottom navbar-expand-lg bg-body-tertiary"
 		data-bs-theme="dark">
@@ -68,7 +68,7 @@
 			<td sec:authorize="hasAuthority('ADMIN')"><a
 				th:href="@{/delete/{id}(id=${armor.id})}" class="btn-danger">Delete</a></td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/edit/{id}(id=${armor.id})}">Edit</a></td>
+				th:href="@{/editarmor/{id}(id=${armor.id})}">Edit</a></td>
 		</tr>
 	</table>
 
