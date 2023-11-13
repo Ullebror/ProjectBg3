@@ -2,10 +2,9 @@ package project.bg3.model;
 
 import jakarta.persistence.Entity;
 
-
 @Entity
 public class Armor extends Item {
-	
+
 	private int ac;
 	private String dexBonus;
 	private String stealth;
@@ -15,8 +14,8 @@ public class Armor extends Item {
 		super();
 	}
 
-	public Armor(String name, String description1, String description2, String description3, String description4, String rarity, int ac,
-			String dexBonus, String stealth, String type) {
+	public Armor(String name, String description1, String description2, String description3, String description4,
+			String rarity, String location, int ac, String dexBonus, String stealth, String type) {
 		super();
 		this.name = name;
 		this.description1 = description1;
@@ -24,16 +23,17 @@ public class Armor extends Item {
 		this.description3 = description3;
 		this.description4 = description4;
 		this.rarity = rarity;
+		this.location = location;
 		this.ac = ac;
 		this.stealth = stealth;
 		this.type = type;
 		this.dexBonus = dexBonus;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -73,7 +73,8 @@ public class Armor extends Item {
 	@Override
 	public String toString() {
 		return "Armor [id=" + id + ", name=" + name + ", description1=" + description1 + ", description2="
-				+ description2 + ", description3=" + description3 + ", description4=" + description4 + ", rarity=" + rarity + ", ac=" + ac + ", attribute="
-				+ dexBonus + ", stealthdisadv=" + stealth + ", type=" + type + "]";
+				+ description2 + ", description3=" + description3 + ", description4=" + description4 + ", rarity="
+				+ rarity + ", location=" + location + ", ac=" + ac + ", attribute=" + dexBonus + ", stealthdisadv="
+				+ stealth + ", type=" + type + "]";
 	}
 }

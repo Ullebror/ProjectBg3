@@ -1,5 +1,7 @@
 package project.bg3.web;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
@@ -7,10 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.bg3.model.Armor;
 import project.bg3.model.ArmorRepository;
-//import project.bg3.model.ItemRepository;
 import project.bg3.model.Weapon;
 import project.bg3.model.WeaponRepository;
 
@@ -25,8 +27,20 @@ public class Bg3Controller {
 	public String login() {
 		return "login";
 	}
+	
+	// RESTful service to get all armor
+    @RequestMapping(value="/armor", method = RequestMethod.GET)
+    public @ResponseBody List<Armor> armorListRest() {	
+        return (List<Armor>) arepository.findAll();
+    }    
 
-	// for showing both weapons and items as their own tables on the same page
+ // RESTful service to get all weapons
+    @RequestMapping(value="/weapons", method = RequestMethod.GET)
+    public @ResponseBody List<Weapon> weaponListRest() {	
+        return (List<Weapon>) wrepository.findAll();
+    }    
+    
+	// for showing both weapons and armor as their own tables on the same page
 	@RequestMapping(value = { "/", "/itemlist" })
 	public String itemList(Model model) {
 		model.addAttribute("armors", arepository.findAll());

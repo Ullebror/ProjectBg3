@@ -6,7 +6,9 @@
 <title>Itemlist</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
-	th:href="@{/css/bootstrap.min.css}" />
+	th:href="@{/css/bootstrap.min.css}"  />
+<link type="text/css" rel="stylesheet" href="/css/Basic.css"
+	th:href="@{/css/Basic.css}" />
 </head>
 <body>
 	<nav
@@ -51,6 +53,7 @@
 			<th>Rarity</th>
 			<th>Stealth disadv</th>
 			<th>Type</th>
+			<th>Location</th>
 			<th>Description</th>
 		</tr>
 		<tr th:each="armor : ${armors}">
@@ -60,6 +63,7 @@
 			<td th:text="${armor.rarity}"></td>
 			<td th:text="${armor.stealth}"></td>
 			<td th:text="${armor.type}"></td>
+			<td> <span class="spoiler" th:text="${armor.location}"></span> </td>
 			<td>
 				<p th:text="${armor.description1}"></p>
 				<p th:text="${armor.description2}"></p>
@@ -87,6 +91,7 @@
 			<th>Attribute</th>
 			<th>Rarity</th>
 			<th>Type</th>
+			<th>Location</th>
 			<th>Description</th>
 		</tr>
 		<tr th:each="weapon : ${weapons}">
@@ -97,6 +102,7 @@
 			<td th:text="${weapon.attribute}"></td>
 			<td th:text="${weapon.rarity}"></td>
 			<td th:text="${weapon.type}"></td>
+			<td> <span class="spoiler" th:text="${weapon.location}"></span> </td>
 			<td>
 				<p th:text="${weapon.description1}"></p>
 				<p th:text="${weapon.description2}"></p>

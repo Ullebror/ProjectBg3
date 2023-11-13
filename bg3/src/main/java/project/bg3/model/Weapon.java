@@ -2,10 +2,9 @@ package project.bg3.model;
 
 import jakarta.persistence.Entity;
 
-
 @Entity
 public class Weapon extends Item {
-	
+
 	private String damage;
 	private String damageType;
 	private String type;
@@ -16,8 +15,9 @@ public class Weapon extends Item {
 		super();
 	}
 
-	public Weapon(String name, String description1, String description2, String description3,  String description4, String rarity,
-			String damage, String damageType, String type, String attribute, String extra) {
+	public Weapon(String name, String description1, String description2, String description3, String description4,
+			String rarity, String location, String damage, String damageType, String type, String attribute,
+			String extra) {
 		super();
 		this.name = name;
 		this.description1 = description1;
@@ -25,17 +25,18 @@ public class Weapon extends Item {
 		this.description3 = description3;
 		this.description4 = description4;
 		this.rarity = rarity;
+		this.location = location;
 		this.damage = damage;
 		this.damageType = damageType;
 		this.type = type;
 		this.attribute = attribute;
 		this.extra = extra;
 	}
-	
+
 	public Long getId() {
 		return id;
 	}
-	
+
 	public void setId(Long id) {
 		this.id = id;
 	}
@@ -83,8 +84,8 @@ public class Weapon extends Item {
 	@Override
 	public String toString() {
 		return "Weapon [id=" + id + ", name=" + name + ", description1=" + description1 + ", description2="
-				+ description2 + ", description3=" + description3 + ", description4=" + description4 + ", rarity=" + rarity + "damage=" + damage
-				+ ", damageType=" + damageType + ", type=" + type + ", attribute=" + attribute + ", extra=" + extra
-				+ "]";
+				+ description2 + ", description3=" + description3 + ", description4=" + description4 + ", rarity="
+				+ rarity + ", location=" + location + ", damage=" + damage + ", damageType=" + damageType + ", type="
+				+ type + ", attribute=" + attribute + ", extra=" + extra + "]";
 	}
 }
