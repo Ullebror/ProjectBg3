@@ -1,14 +1,24 @@
 package project.bg3.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.validation.constraints.NotBlank;
 
 @Entity
 public class Weapon extends Item {
 
+	@Column(nullable = false)
 	private String damage;
+	
+	@Column(nullable = false)
 	private String damageType;
+	
+	@Column(nullable = false)
 	private String type;
+	
+	@Column(nullable = false)
 	private String attribute;
+	
 	private String extra;
 
 	public Weapon() {

@@ -1,13 +1,22 @@
 package project.bg3.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+
 
 @Entity
 public class Armor extends Item {
 
+	@Column(nullable = false)
 	private int ac;
+	
+	@Column(nullable = false)
 	private String dexBonus;
+	
+	@Column(nullable = false)
 	private String stealth;
+	
+	@Column(nullable = false)
 	private String type;
 
 	public Armor() {

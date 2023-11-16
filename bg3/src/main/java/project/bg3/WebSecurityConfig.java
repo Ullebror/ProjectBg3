@@ -25,6 +25,8 @@ public class WebSecurityConfig  {
 		http.
 		authorizeHttpRequests(authorize -> authorize
 				.requestMatchers(antMatcher("/css/**")).permitAll()
+				.requestMatchers(antMatcher("/user/registration**")).permitAll()
+				.requestMatchers(antMatcher("/registration**")).permitAll()
 				.requestMatchers(antMatcher("/admin/**")).hasRole("ADMIN")
 				.anyRequest().authenticated()
 		)

@@ -10,11 +10,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.WebRequest;
 
 import project.bg3.model.Armor;
 import project.bg3.model.ArmorRepository;
 import project.bg3.model.Weapon;
 import project.bg3.model.WeaponRepository;
+import project.bg3.dto.UserDto;
 
 @Controller
 public class Bg3Controller {
@@ -26,6 +28,13 @@ public class Bg3Controller {
 	@RequestMapping(value = "/login")
 	public String login() {
 		return "login";
+	}
+	
+	@RequestMapping("/user/registration")
+	public String showRegistrationForm(WebRequest request, Model model) {
+	    UserDto userDto = new UserDto();
+	    model.addAttribute("user", userDto);
+	    return "registration";
 	}
 	
 	// RESTful service to get all armor

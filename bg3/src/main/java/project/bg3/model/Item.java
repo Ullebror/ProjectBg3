@@ -1,5 +1,6 @@
 package project.bg3.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -12,12 +13,17 @@ public abstract class Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 
+	@Column(nullable = false)
 	protected String name;
 	protected String description1;
 	protected String description2;
 	protected String description3;
 	protected String description4;
+	
+	@Column(nullable = false)
 	public String rarity;
+	
+	@Column(nullable = false)
 	public String location;
 
 	public Item() {
