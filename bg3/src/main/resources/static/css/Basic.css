@@ -14,3 +14,22 @@
  background-color: rgb(111, 78,55);
 }
 
+.legendary, .Legendary {
+	color: #ff8000;
+}
+
+.uncommon, .Uncommon {
+	color: #1eff00;
+}
+
+.rare, .Rare {
+	color: #0070dd;
+}
+
+.Very rare, .very rare, .Very Rare {
+	color: #a335ee;
+}
+
+.common, .Common {
+	color: #ffffff;
+}
