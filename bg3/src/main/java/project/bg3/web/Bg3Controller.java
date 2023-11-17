@@ -25,6 +25,7 @@ import project.bg3.model.Armor;
 import project.bg3.model.ArmorRepository;
 import project.bg3.model.Weapon;
 import project.bg3.model.WeaponRepository;
+import project.bg3.model.AppUserRepository;
 import project.bg3.validation.AppUserAlreadyExistsAuthenticationException;
 import project.bg3.dto.UserDto;
 
@@ -36,6 +37,8 @@ public class Bg3Controller {
 	private ArmorRepository arepository;
 	@Autowired
 	private UserService userService;
+	@Autowired
+	private AppUserRepository urepository;
 
 	@RequestMapping(value = "/login")
 	public String login() {
@@ -73,6 +76,27 @@ public class Bg3Controller {
 	@RequestMapping(value = "/weapons", method = RequestMethod.GET)
 	public @ResponseBody List<Weapon> weaponListRest() {
 		return (List<Weapon>) wrepository.findAll();
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@RequestMapping(value = "/users")
+	public String userList(Model model) {
+		model.addAttribute("users", urepository.findAll());
+		return "users";
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@RequestMapping(value = "/saveuser", method = RequestMethod.POST)
+	public String save(AppUser user) {
+		urepository.save(user);
+		return "redirect:itemlist";
+	}
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@RequestMapping(value = { "/edituser/{id}" })
+	public String editUser(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("user", urepository.findById(id));
+		return "edituser";
 	}
 
 	// for showing both weapons and armor as their own tables on the same page

@@ -1,37 +1,33 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
-<title>Itemlist</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
-	th:href="@{/css/bootstrap.min.css}"  />
-<link type="text/css" rel="stylesheet" href="/css/Basic.css"
-	th:href="@{/css/Basic.css}" />
+	<title>Itemlist</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="/css/Basic.css" th:href="@{/css/Basic.css}" />
 </head>
-<body class="bg-dark text-white" >
-	<nav
-		class="navbar bg-dark borderbottom navbar-expand-lg bg-body-tertiary"
-		data-bs-theme="dark">
+
+<body class="bg-dark text-white">
+	<nav class="navbar bg-dark borderbottom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" th:href="@{/itemlist}">Home</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-				aria-controls="navbarNavAltMarkup" aria-expanded="false"
-				aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link" th:href="@{/weaponlist}">Weapons</a> <a
-						class="nav-link" th:href="@{/armorlist}">Armour</a>
+					<a class="nav-link" th:href="@{/weaponlist}">Weapons</a> <a class="nav-link"
+						th:href="@{/armorlist}">Armour</a>
 				</div>
 				<div class="mx-auto">
-					<a sec:authorize="hasAuthority('ADMIN')" href="/addweapon"
-						class="btn btn-success">Add Weapon</a> <a
-						sec:authorize="hasAuthority('ADMIN')" href="/addarmor"
-						class="btn btn-success">Add Armour</a>
+					<a sec:authorize="hasAuthority('ADMIN')" href="/addweapon" class="btn btn-success">Add Weapon</a> <a
+						sec:authorize="hasAuthority('ADMIN')" href="/addarmor" class="btn btn-success">Add Armour</a>
+				</div>
+				<div class="ml-auto mr-1">
+					<a class="btn btn-secondary" sec:authorize="hasAuthority('ADMIN')" th:href="@{/users}">Users</a>
 				</div>
 				<div class="ml-auto mr-1">
 					<form class="ml-auto mr-1" th:action="@{/logout}" method="post">
@@ -70,12 +66,10 @@
 				<p th:text="${armor.description3}"></p>
 				<p th:text="${armor.description4}"></p>
 			</td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/deletearmor/{id}(id=${armor.id})}"
-				class="btn btn-danger">Delete</a></td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/editarmor/{id}(id=${armor.id})}"
-				class="btn btn-outline-primary">Edit</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deletearmor/{id}(id=${armor.id})}"
+					class="btn btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editarmor/{id}(id=${armor.id})}"
+					class="btn btn-outline-primary">Edit</a></td>
 		</tr>
 	</table>
 
@@ -109,15 +103,14 @@
 				<p th:text="${weapon.description3}"></p>
 				<p th:text="${weapon.description4}"></p>
 			</td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/deleteweapon/{id}(id=${weapon.id})}"
-				class="btn btn-danger">Delete</a></td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/editweapon/{id}(id=${weapon.id})}"
-				class="btn btn-outline-primary">Edit</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/deleteweapon/{id}(id=${weapon.id})}"
+					class="btn btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/editweapon/{id}(id=${weapon.id})}"
+					class="btn btn-outline-primary">Edit</a></td>
 		</tr>
 	</table>
 
 
 </body>
+
 </html>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
+<head>
+	<title>Edit Armour</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+</head>
+
+<body class="bg-dark text-white">
+	<nav class="navbar bg-dark borderbottom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
+		<div class="container-fluid">
+			<a class="navbar-brand" th:href="@{/itemlist}">Home</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+				<div class="navbar-nav">
+					<a class="nav-link" th:href="@{/weaponlist}">Weapons</a> <a class="nav-link"
+						th:href="@{/armorlist}">Armour</a>
+				</div>
+				<div class="ml-auto mr-1">
+					<form class="ml-auto mr-1" th:action="@{/logout}" method="post">
+						<input type="submit" value="Sign Out" />
+					</form>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<h1>Edit Armour</h1>
+	<div>
+		<form th:object="${user}" th:action="@{../saveuser}" action="#" method="post">
+			<label for="id"></label> <input type="hidden" id="id" class="form-control" th:field="*{id}"
+				readonly="readonly" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="username">Username</label> <input type="text" id="username" th:field="*{username}"
+				readonly="readonly" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="password"></label> <input type="hidden" id="password" th:field="*{passwordHash}"
+				readonly="readonly" />
+			<div style="clear: both; display: block; height: 10px;"></div>
+			<label for="role">User Role</label> <input type="text" id="role" th:field="*{role}" />
+			<div style="clear: both; display: table; height: 10px;"></div>
+			<br /> <input type="submit" value="Update" />
+
+		</form>
+	</div>
+
+</body>
+
+</html>
