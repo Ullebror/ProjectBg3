@@ -16,20 +16,30 @@
 
 .legendary, .Legendary {
 	color: #ff8000;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px black;
 }
 
 .uncommon, .Uncommon {
 	color: #1eff00;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px black;
 }
 
 .rare, .Rare {
 	color: #0070dd;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px black;
 }
 
-.Very rare, .very rare, .Very Rare {
+.Very {
 	color: #a335ee;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px black;
 }
 
 .common, .Common {
 	color: #ffffff;
+	font-weight: bold;
+	text-shadow: 1px 1px 1px black;
 }

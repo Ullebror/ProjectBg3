@@ -11,7 +11,7 @@
 <body>
 	<div class="col-md-4 col-md-offset-4">
 		<h1>Registration form</h1>
-		<form class="form-control" action="#" th:object="${user}"
+		<form class="form-control" th:action="@{../user/registration}" action="" th:object="${user}"
 			method="POST">
 			<div>
 				<label for="username" class="form-label">username</label> <input
@@ -21,13 +21,13 @@
 			</div>
 			<div>
 				<label for="password" class="form-label">password</label> <input
-					class="form-control" id="password" type="text"
+					class="form-control" id="password" type="password"
 					th:field="*{password}" required /> <small class="text-danger"
 					th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></small>
 			</div>
 			<div>
 				<label for="matchinPassword" class="form-label">confirm
-					password</label> <input class="form-control" id="matchinPassword"
+					password</label> <input type="password" class="form-control" id="matchinPassword"
 					th:field="*{matchingPassword}" required /><small
 					class="text-danger"
 					th:if="${#fields.hasErrors('matchingPassword')}"

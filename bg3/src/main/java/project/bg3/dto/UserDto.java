@@ -2,7 +2,9 @@ package project.bg3.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
+import project.bg3.validation.PasswordMatches;
 
+@PasswordMatches
 public class UserDto {
     
     @NotNull
@@ -13,6 +15,7 @@ public class UserDto {
     @NotEmpty
     private String password;
     private String matchingPassword;
+
     
     public String getUsername() {
     	return username;

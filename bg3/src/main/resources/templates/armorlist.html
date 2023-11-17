@@ -66,8 +66,8 @@
 				<p th:text="${armor.description4}"></p>
 			</td>
 			<td sec:authorize="hasAuthority('ADMIN')"><a
-				th:href="@{/deletearmor/{id}(id=${armor.id})}" class="btn-danger">Delete</a></td>
-			<td sec:authorize="hasAuthority('ADMIN')"><a
+				th:href="@{/deletearmor/{id}(id=${armor.id})}" class="btn btn-danger">Delete</a></td>
+			<td sec:authorize="hasAuthority('ADMIN')"><a class="btn btn-outline-primary"
 				th:href="@{/editarmor/{id}(id=${armor.id})}">Edit</a></td>
 		</tr>
 	</table>

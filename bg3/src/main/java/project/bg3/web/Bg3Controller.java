@@ -6,19 +6,26 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.ModelAndView;
 
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.validation.Valid;
 import project.bg3.model.Item;
-import project.bg3.model.ItemRepository;
+import project.bg3.model.AppUser;
 import project.bg3.model.Armor;
 import project.bg3.model.ArmorRepository;
 import project.bg3.model.Weapon;
 import project.bg3.model.WeaponRepository;
+import project.bg3.validation.AppUserAlreadyExistsAuthenticationException;
 import project.bg3.dto.UserDto;
 
 @Controller
@@ -28,18 +35,32 @@ public class Bg3Controller {
 	@Autowired
 	private ArmorRepository arepository;
 	@Autowired
-	private ItemRepository irepository;
+	private UserService userService;
 
 	@RequestMapping(value = "/login")
 	public String login() {
 		return "login";
 	}
 
-	@RequestMapping("/user/registration")
+	@GetMapping("/user/registration")
 	public String showRegistrationForm(WebRequest request, Model model) {
 		UserDto userDto = new UserDto();
 		model.addAttribute("user", userDto);
 		return "registration";
+	}
+
+	@PostMapping("/user/registration")
+	public ModelAndView registerUserAccount(@ModelAttribute("user") @Valid UserDto userDto, HttpServletRequest request,
+			Errors errors) {
+		ModelAndView mav = new ModelAndView("user");
+		try {
+			AppUser registered = userService.registerNewUserAccount(userDto);
+		} catch (AppUserAlreadyExistsAuthenticationException uaeEx) {
+			mav.addObject("message", "An account for that username already exists.");
+			return mav;
+		}
+
+		return new ModelAndView("successRegister", "user", userDto);
 	}
 
 	// RESTful service to get all armor
@@ -125,8 +146,8 @@ public class Bg3Controller {
 	// also hidden on pages just in case.
 	// gives the attributes of an existing armor to be updated in the database
 	@PreAuthorize("hasAuthority('ADMIN')")
-	@RequestMapping(value = { "/editarmor/{armorId}" })
-	public String editArmor(@PathVariable("armorid") Long armorId, Model model) {
+	@RequestMapping(value = { "/editarmor/{id}" })
+	public String editArmor(@PathVariable("id") Long armorId, Model model) {
 		model.addAttribute("armor", arepository.findById(armorId));
 		return "editarmor";
 	}
@@ -152,14 +173,14 @@ public class Bg3Controller {
 	}
 
 	// deletes an armor
-	
+
 	@PreAuthorize("hasAuthority('ADMIN')")
 
 	@RequestMapping(value = { "/deletearmor/{id}" }, method = RequestMethod.GET)
 	public String deleteArmor(@PathVariable("id") Long id, Model model) {
 		arepository.deleteById(id);
-	
+
 		return "redirect:../itemlist";
-	} 
+	}
 
 }
