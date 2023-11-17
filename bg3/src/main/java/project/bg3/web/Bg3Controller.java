@@ -11,7 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.servlet.ModelAndView;
 
+import project.bg3.model.Item;
+import project.bg3.model.ItemRepository;
 import project.bg3.model.Armor;
 import project.bg3.model.ArmorRepository;
 import project.bg3.model.Weapon;
@@ -24,31 +27,33 @@ public class Bg3Controller {
 	private WeaponRepository wrepository;
 	@Autowired
 	private ArmorRepository arepository;
+	@Autowired
+	private ItemRepository irepository;
 
 	@RequestMapping(value = "/login")
 	public String login() {
 		return "login";
 	}
-	
+
 	@RequestMapping("/user/registration")
 	public String showRegistrationForm(WebRequest request, Model model) {
-	    UserDto userDto = new UserDto();
-	    model.addAttribute("user", userDto);
-	    return "registration";
+		UserDto userDto = new UserDto();
+		model.addAttribute("user", userDto);
+		return "registration";
 	}
-	
-	// RESTful service to get all armor
-    @RequestMapping(value="/armor", method = RequestMethod.GET)
-    public @ResponseBody List<Armor> armorListRest() {	
-        return (List<Armor>) arepository.findAll();
-    }    
 
- // RESTful service to get all weapons
-    @RequestMapping(value="/weapons", method = RequestMethod.GET)
-    public @ResponseBody List<Weapon> weaponListRest() {	
-        return (List<Weapon>) wrepository.findAll();
-    }    
-    
+	// RESTful service to get all armor
+	@RequestMapping(value = "/armor", method = RequestMethod.GET)
+	public @ResponseBody List<Armor> armorListRest() {
+		return (List<Armor>) arepository.findAll();
+	}
+
+	// RESTful service to get all weapons
+	@RequestMapping(value = "/weapons", method = RequestMethod.GET)
+	public @ResponseBody List<Weapon> weaponListRest() {
+		return (List<Weapon>) wrepository.findAll();
+	}
+
 	// for showing both weapons and armor as their own tables on the same page
 	@RequestMapping(value = { "/", "/itemlist" })
 	public String itemList(Model model) {
@@ -71,22 +76,31 @@ public class Bg3Controller {
 		return "armorlist";
 	}
 
-	// a way to create a page where the user with ADMIN rights can add new weapon to
-	// the database
+	// a way to create a page where the user with ADMIN rights can add new weapon as
+	// an Item to
+	// the database using ModelAndView
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = { "/addweapon" })
-	public String addWeapon(Model model) {
-		model.addAttribute("weapon", new Weapon());
-		return "addweapon";
+	public ModelAndView addWeapon() {
+		ModelAndView mav = new ModelAndView("addweapon");
+		Item weapon = new Weapon();
+
+		mav.addObject("weapon", weapon);
+		return mav;
 	}
 
-	// a way to create a page where the user with ADMIN rights can add new armour to
-	// the database
+	// a way to create a page where the user with ADMIN rights can add new armor as
+	// an Item to
+	// the database using ModelAndView
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = { "/addarmor" })
-	public String addArmor(Model model) {
-		model.addAttribute("armor", new Armor());
-		return "addarmor";
+	public ModelAndView addArmor() {
+		ModelAndView mav = new ModelAndView("addarmor");
+		Item armor = new Armor();
+
+		mav.addObject("armor", armor);
+
+		return mav;
 	}
 
 	// PreAuthorize protects from users that should only have viewing rights. links
@@ -107,14 +121,18 @@ public class Bg3Controller {
 		return "redirect:itemlist";
 	}
 
-	// gives the attributes of an existing armour to be updated in the database
+	// PreAuthorize protects from users that should only have viewing rights. links
+	// also hidden on pages just in case.
+	// gives the attributes of an existing armor to be updated in the database
 	@PreAuthorize("hasAuthority('ADMIN')")
-	@RequestMapping(value = { "/editarmor/{id}" })
-	public String editArmor(@PathVariable("id") Long armorId, Model model) {
+	@RequestMapping(value = { "/editarmor/{armorId}" })
+	public String editArmor(@PathVariable("armorid") Long armorId, Model model) {
 		model.addAttribute("armor", arepository.findById(armorId));
 		return "editarmor";
 	}
 
+	// PreAuthorize protects from users that should only have viewing rights. links
+	// also hidden on pages just in case.
 	// gives the attributes of an existing weapon to be updated in the database
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = { "/editweapon/{id}" })
@@ -122,5 +140,26 @@ public class Bg3Controller {
 		model.addAttribute("weapon", wrepository.findById(weaponId));
 		return "editweapon";
 	}
+
+	// PreAuthorize protects from users that should only have viewing rights. links
+	// also hidden on pages just in case.
+	// deletes a weapon
+	@PreAuthorize("hasAuthority('ADMIN')")
+	@RequestMapping(value = { "/deleteweapon/{id}" }, method = RequestMethod.GET)
+	public String deleteWeapon(@PathVariable("id") Long id, Model model) {
+		wrepository.deleteById(id);
+		return "redirect:../itemlist";
+	}
+
+	// deletes an armor
+	
+	@PreAuthorize("hasAuthority('ADMIN')")
+
+	@RequestMapping(value = { "/deletearmor/{id}" }, method = RequestMethod.GET)
+	public String deleteArmor(@PathVariable("id") Long id, Model model) {
+		arepository.deleteById(id);
+	
+		return "redirect:../itemlist";
+	} 
 
 }

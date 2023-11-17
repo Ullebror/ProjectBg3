@@ -32,7 +32,7 @@ public class Bg3Application extends SpringBootServletInitializer {
 			AppUserRepository urepository, WeaponRepository wrepository) {
 		return (args) -> {
 
-			arepository.save(new Armor("Helldusk Armour",
+			/*arepository.save(new Armor("Helldusk Armour",
 					"Helldusk armour: You are considered Proficient with this armour while wearing it.",
 					"Infernal Retribution: When you succeed a Saving Thow, the caster receives Burning for 3 turns.",
 					"Prime Aegis of Fire: You have Resistance to Fire damage and cannot be burned. you take 3 less damage from all sources.",
@@ -47,13 +47,13 @@ public class Bg3Application extends SpringBootServletInitializer {
 					"Veil of the Wind:  You gain a +3m/10ft bonus to movement speed and jump distance. Equipping this weapon gives you Immunity to falling damage.",
 					"Nyrulna: Glowing: This object shines with a glowing light in a radius of 6m",
 					"Zephyr Flash: Rush forward, creating an air vortex that blasts foes and possibly inflicts Bleeding.",
-					"Legendary", "Circus of the Last Days", "1d6 + 3", "Piercing", "Trident", "STR", "1d6"));
+					"Legendary", "Circus of the Last Days", "1d6 + 3", "Piercing", "Trident", "STR", "1d6")); */
 
-			AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
+			/*AppUser user1 = new AppUser("user", "$2a$06$3jYRJrg0ghaaypjZ/.g4SethoeA51ph3UD4kZi9oPkeMTpjKU5uo6", "USER");
 			AppUser user2 = new AppUser("admin", "$2a$10$0MMwY.IQqpsVc1jC8u7IJ.2rT8b0Cd3b3sfIBGV2zfgnPGtT4r0.C",
 					"ADMIN");
 			urepository.save(user1);
-			urepository.save(user2);
+			urepository.save(user2); */
 
 		};
 

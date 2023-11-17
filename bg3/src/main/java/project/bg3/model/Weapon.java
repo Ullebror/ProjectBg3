@@ -1,11 +1,25 @@
 package project.bg3.model;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
+
+
 
 @Entity
+@Table(name="weapons")
 public class Weapon extends Item {
+	
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	protected Long id;
+	
 
 	@Column(nullable = false)
 	private String damage;
@@ -20,22 +34,21 @@ public class Weapon extends Item {
 	private String attribute;
 	
 	private String extra;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name ="id")
+	private Item item;
 
 	public Weapon() {
-		super();
+		
 	}
+	
 
 	public Weapon(String name, String description1, String description2, String description3, String description4,
 			String rarity, String location, String damage, String damageType, String type, String attribute,
 			String extra) {
 		super();
 		this.name = name;
-		this.description1 = description1;
-		this.description2 = description2;
-		this.description3 = description3;
-		this.description4 = description4;
-		this.rarity = rarity;
-		this.location = location;
 		this.damage = damage;
 		this.damageType = damageType;
 		this.type = type;
@@ -43,9 +56,11 @@ public class Weapon extends Item {
 		this.extra = extra;
 	}
 
-	public Long getId() {
-		return id;
-	}
+	
+	
+    public Long getId() {
+        return id;
+    }
 
 	public void setId(Long id) {
 		this.id = id;
