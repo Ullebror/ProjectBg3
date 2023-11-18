@@ -1,42 +1,34 @@
 package project.bg3.model;
 
-import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
-
 
 @Entity
 @Table(name = "armor")
 public class Armor extends Item {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 
 	@Column(nullable = false)
 	private int ac;
-	
+
 	@Column(nullable = false)
 	private String dexBonus;
-	
+
 	@Column(nullable = false)
 	private String stealth;
-	
+
 	@Column(nullable = false)
 	private String type;
-	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name ="id")
-	private Item item;
 
 	public Armor() {
-		
+
 	}
 
 	public Armor(String name, String description1, String description2, String description3, String description4,
@@ -48,10 +40,9 @@ public class Armor extends Item {
 		this.dexBonus = dexBonus;
 	}
 
-	
-    public Long getId() {
-        return id;
-    }
+	public Long getId() {
+		return id;
+	}
 
 	public void setId(Long id) {
 		this.id = id;

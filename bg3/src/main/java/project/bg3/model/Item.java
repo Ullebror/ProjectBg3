@@ -1,29 +1,12 @@
 package project.bg3.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Inheritance;
-import jakarta.persistence.InheritanceType;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.OneToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.MappedSuperclass;
 
-@Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-@Table(name = "item")
+@MappedSuperclass
 public class Item {
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "id")
-	protected Long id;
 
-	@Column(nullable = false)
+	
 	protected String name;
 
 	protected String description1;
@@ -31,21 +14,11 @@ public class Item {
 	protected String description3;
 	protected String description4;
 
-	@Column(nullable = false)
+	
 	public String rarity;
 
-	@Column(nullable = false)
+
 	public String location;
-
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "weapon_id", referencedColumnName = "id")
-	private Weapon weapon;
-
-	@JsonIgnore
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "armor_id", referencedColumnName = "id")
-	private Armor armor;
 
 	public Item() {
 		super();
@@ -61,9 +34,6 @@ public class Item {
 		this.location = location;
 	}
 
-	public Long getId() {
-		return id;
-	}
 
 	public String getName() {
 		return name;
@@ -93,10 +63,6 @@ public class Item {
 		return location;
 	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
-
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -123,13 +89,6 @@ public class Item {
 
 	public void setLocation(String location) {
 		this.location = location;
-	}
-
-	@Override
-	public String toString() {
-		return "Item [id=" + id + ", name=" + name + ", description1=" + description1 + ", description2=" + description2
-				+ ", description3=" + description3 + ", description4=" + description4 + ", rarity=" + rarity
-				+ ", location=" + location + "]";
 	}
 
 }
