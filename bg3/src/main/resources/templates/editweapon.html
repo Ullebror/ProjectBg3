@@ -6,6 +6,7 @@
 	<title>Edit Weapon</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
+	<link type="text/css" rel="stylesheet" href="/css/Basic.css" th:href="@{/css/Basic.css}" />
 </head>
 
 <body class="bg-dark text-white">
@@ -50,7 +51,7 @@
 				type="text" id="description4" th:field="*{description4}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="raritylist">Rarity</label>
-			<select id="raritylist" th:field="*{rarity}" class="form-control">
+			<select id="raritylist" th:field="*{rarity}" class="form-control" width="100px">
 				<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}"></option>
 			</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
@@ -59,7 +60,7 @@
 			<label for="type">Type</label> <input type="text" id="type" th:field="*{type}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="abilitylist">Attribute</label>
-			<select id="abilitylist" th:field="*{ability}" class="form-control">
+			<select id="abilitylist" th:field="*{ability}" class="form-control" width="100px">
 				<option th:each="ability: ${abilities}" th:value="${ability.id}" th:text="${ability.attribute}">
 				</option> <br /> <input type="submit" value="Update" />
 
