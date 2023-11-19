@@ -7,13 +7,9 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
-import project.bg3.model.AppUser;
-import project.bg3.model.AppUserRepository;
-import project.bg3.model.Armor;
-import project.bg3.model.ArmorRepository;
-//import project.bg3.model.ItemRepository;
-import project.bg3.model.Weapon;
-import project.bg3.model.WeaponRepository;
+import project.bg3.repository.AppUserRepository;
+import project.bg3.repository.ArmorRepository;
+import project.bg3.repository.WeaponRepository;
 
 @SpringBootApplication
 public class Bg3Application extends SpringBootServletInitializer {

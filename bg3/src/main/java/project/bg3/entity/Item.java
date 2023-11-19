@@ -1,4 +1,4 @@
-package project.bg3.model;
+package project.bg3.entity;
 
 
 import jakarta.persistence.MappedSuperclass;

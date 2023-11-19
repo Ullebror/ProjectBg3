@@ -1,4 +1,4 @@
-package project.bg3.model;
+/*package project.bg3.repository;
 
 import java.util.List;
 
@@ -10,4 +10,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface ItemRepository extends CrudRepository<Weapon, Long> {
 	List<Item> findByName(@Param("name") String name);
 
-}
+} */
+
+

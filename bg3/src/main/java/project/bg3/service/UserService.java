@@ -1,4 +1,4 @@
-package project.bg3.web;
+package project.bg3.service;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,8 +7,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.bg3.dto.UserDto;
-import project.bg3.model.AppUser;
-import project.bg3.model.AppUserRepository;
+import project.bg3.entity.AppUser;
+import project.bg3.repository.AppUserRepository;
 import project.bg3.validation.AppUserAlreadyExistsAuthenticationException;
 
 @Service
