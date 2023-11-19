@@ -12,6 +12,4 @@ import project.bg3.entity.Weapon;
 public interface WeaponRepository extends CrudRepository<Weapon, Long> {
 	List<Weapon> findByName(@Param("name") String name);
 
-	List<Weapon> findByRarity(@Param("rarity") String rarity);
-
 }

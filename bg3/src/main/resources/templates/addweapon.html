@@ -1,29 +1,25 @@
 <!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org"
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
 	xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity6">
+
 <head>
-<title>Add Weapon</title>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css"
-	th:href="@{/css/bootstrap.min.css}" />
+	<title>Add Weapon</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<link type="text/css" rel="stylesheet" href="/css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" />
 </head>
+
 <body class="bg-dark text-white">
-	<nav
-		class="navbar bg-dark borderbottom navbar-expand-lg bg-body-tertiary"
-		data-bs-theme="dark">
+	<nav class="navbar bg-dark borderbottom navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
 		<div class="container-fluid">
 			<a class="navbar-brand" th:href="@{/itemlist}">Home</a>
-			<button class="navbar-toggler" type="button"
-				data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
-				aria-controls="navbarNavAltMarkup" aria-expanded="false"
-				aria-label="Toggle navigation">
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 				<span class="navbar-toggler-icon"></span>
 			</button>
 			<div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 				<div class="navbar-nav">
-					<a class="nav-link" th:href="@{/weaponlist}">Weapons</a> <a
-						class="nav-link" th:href="@{/armorlist}">Armour</a>
+					<a class="nav-link" th:href="@{/weaponlist}">Weapons</a> <a class="nav-link"
+						th:href="@{/armorlist}">Armour</a>
 				</div>
 				<div class="ml-auto mr-1">
 					<form class="ml-auto mr-1" th:action="@{/logout}" method="post">
@@ -35,42 +31,42 @@
 	</nav>
 	<h1>Add Weapon</h1>
 	<div>
-		<form th:object="${weapon}" th:action="@{../saveweapon}" action="#"
-			method="post">
-			<label for="name">Name</label> <input type="text" id="name"
-				th:field="*{name}" />
+		<form th:object="${weapon}" th:action="@{../saveweapon}" action="#" method="post">
+			<label for="name">Name</label> <input type="text" id="name" th:field="*{name}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="damage">Damage</label> <input type="text" id="damage"
-				th:field="*{damage}" />
+			<label for="damage">Damage</label> <input type="text" id="damage" th:field="*{damage}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="extra">Extra Damage</label> <input type="text" id="extra"
-				th:field="*{extra}" />
+			<label for="extra">Extra Damage</label> <input type="text" id="extra" th:field="*{extra}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="damageType">Damage Type</label> <input type="text"
-				id="damageType" th:field="*{damageType}" />
+			<label for="damageType">Damage Type</label> <input type="text" id="damageType" th:field="*{damageType}" />
 			<div style="clear: both; display: table; height: 10px;"></div>
-			<label for="Features">Features</label> <input size=100 type="text"
-				id="description1" th:field="*{description1}" /> <br /> <input
-				size=100 type="text" id="description2" th:field="*{description2}" />
-			<br /> <input size=100 type="text" id="description3"
-				th:field="*{description3}" /> <br /> <input size=100 type="text"
-				id="description4" th:field="*{description4}" />
+			<label for="Features">Features</label> <input size=100 type="text" id="description1"
+				th:field="*{description1}" /> <br /> <input size=100 type="text" id="description2"
+				th:field="*{description2}" />
+			<br /> <input size=100 type="text" id="description3" th:field="*{description3}" /> <br /> <input size=100
+				type="text" id="description4" th:field="*{description4}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="rarity">Rarity</label> <input type="text" id="rarity"
-				th:field="*{rarity}" />
+			<label for="raritylist">Rarity</label>
+			<select id="raritylist" th:field="*{rarity}" class="form-control">
+				<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}"></option>
+			</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="location">Location</label> <input type="text"
-				id="location" th:field="*{location}" />
+			<label for="location">Location</label> <input type="text" id="location" th:field="*{location}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="type">Type</label> <input type="text" id="type"
-				th:field="*{type}" />
+			<label for="type">Type</label> <input type="text" id="type" th:field="*{type}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="attribute">Attribute</label><input type="text"
-				id="attribute" th:field="*{attribute}" /> <br /> <input
-				type="submit" value="Add" />
+			<label for="abilitylist">Attribute</label>
+			<select id="abilitylist" th:field="*{ability}" class="form-control">
+				<option th:each="ability: ${abilities}" th:value="${ability.id}" th:text="${ability.attribute}">
+				</option>
+			</select>
+			<!--<label for="attribute">Attribute</label><input type="text" id="attribute" th:field="*{attribute}" /> -->
+			<br />
+			<input type="submit" value="Add" />
 
 		</form>
 	</div>
 
 </body>
+
 </html>

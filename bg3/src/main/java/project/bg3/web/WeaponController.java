@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.bg3.entity.Weapon;
+import project.bg3.repository.AbilityRepository;
+import project.bg3.repository.RarityRepository;
 import project.bg3.repository.WeaponRepository;
 
 //This controller is for weapon specific methods.
@@ -19,6 +21,10 @@ import project.bg3.repository.WeaponRepository;
 public class WeaponController {
 	@Autowired
 	private WeaponRepository wrepository;
+	@Autowired
+	private RarityRepository rrepository;
+	@Autowired
+	private AbilityRepository arepository;
 
 	// RESTful service to get all weapons
 	@RequestMapping(value = "/weapons", method = RequestMethod.GET)
@@ -38,6 +44,8 @@ public class WeaponController {
 	@RequestMapping(value = { "/addweapon" })
 	public String addWeapon(Model model) {
 		model.addAttribute("weapon", new Weapon());
+		model.addAttribute("rarities", rrepository.findAll());
+		model.addAttribute("abilities", arepository.findAll());
 		return "addweapon";
 	}
 
@@ -58,6 +66,8 @@ public class WeaponController {
 		@RequestMapping(value = { "/editweapon/{id}" })
 		public String editWeapon(@PathVariable("id") Long weaponId, Model model) {
 			model.addAttribute("weapon", wrepository.findById(weaponId));
+			model.addAttribute("rarities", rrepository.findAll());
+			model.addAttribute("abilities", arepository.findAll());
 			return "editweapon";
 		}
 

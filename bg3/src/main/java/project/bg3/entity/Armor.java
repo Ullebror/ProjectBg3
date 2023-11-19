@@ -5,6 +5,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -14,6 +16,10 @@ public class Armor extends Item {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
+	
+	@ManyToOne
+	@JoinColumn(name = "rarityid")
+	private Rarity rarity;
 
 	@Column(nullable = false)
 	private int ac;
@@ -26,18 +32,21 @@ public class Armor extends Item {
 
 	@Column(nullable = false)
 	private String type;
+	
+	
 
 	public Armor() {
 
 	}
 
 	public Armor(String name, String description1, String description2, String description3, String description4,
-			String rarity, String location, int ac, String dexBonus, String stealth, String type) {
+			Rarity rarity, String location, int ac, String dexBonus, String stealth, String type) {
 		super();
 		this.ac = ac;
 		this.stealth = stealth;
 		this.type = type;
 		this.dexBonus = dexBonus;
+		this.rarity = rarity;
 	}
 
 	public Long getId() {
@@ -46,6 +55,14 @@ public class Armor extends Item {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public Rarity getRarity() {
+		return rarity;
+	}
+	
+	public void setRarity(Rarity rarity) {
+		this.rarity = rarity;
 	}
 
 	public int getAc() {

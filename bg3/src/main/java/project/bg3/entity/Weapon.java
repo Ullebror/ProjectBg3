@@ -6,6 +6,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 
@@ -18,7 +20,10 @@ public class Weapon extends Item {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Long id;
 	
-
+	@ManyToOne
+	@JoinColumn(name = "rarityid")
+	private Rarity rarity;
+	
 	@Column(nullable = false)
 	private String damage;
 	
@@ -28,8 +33,9 @@ public class Weapon extends Item {
 	@Column(nullable = false)
 	private String type;
 	
-	@Column(nullable = false)
-	private String attribute;
+	@ManyToOne
+	@JoinColumn(name ="abilityid")
+	private Ability ability;
 	
 	private String extra;
 
@@ -39,14 +45,15 @@ public class Weapon extends Item {
 	
 
 	public Weapon(String name, String description1, String description2, String description3, String description4,
-			String rarity, String location, String damage, String damageType, String type, String attribute,
+			Rarity rarity, String location, String damage, String damageType, String type, Ability ability,
 			String extra) {
 		super();
 		this.name = name;
+		this.rarity = rarity;
 		this.damage = damage;
 		this.damageType = damageType;
 		this.type = type;
-		this.attribute = attribute;
+		this.ability = ability;
 		this.extra = extra;
 	}
 
@@ -58,6 +65,14 @@ public class Weapon extends Item {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public Rarity getRarity() {
+		return rarity;
+	}
+	
+	public void setRarity(Rarity rarity) {
+		this.rarity = rarity;
 	}
 
 	public String getDamage() {
@@ -72,8 +87,8 @@ public class Weapon extends Item {
 		return type;
 	}
 
-	public String getAttribute() {
-		return attribute;
+	public Ability getAbility() {
+		return ability;
 	}
 
 	public String getExtra() {
@@ -92,8 +107,8 @@ public class Weapon extends Item {
 		this.type = type;
 	}
 
-	public void setAttribute(String attribute) {
-		this.attribute = attribute;
+	public void setAbility(Ability ability) {
+		this.ability = ability;
 	}
 
 	public void setExtra(String extra) {
@@ -105,6 +120,6 @@ public class Weapon extends Item {
 		return "Weapon [id=" + id + ", name=" + name + ", description1=" + description1 + ", description2="
 				+ description2 + ", description3=" + description3 + ", description4=" + description4 + ", rarity="
 				+ rarity + ", location=" + location + ", damage=" + damage + ", damageType=" + damageType + ", type="
-				+ type + ", attribute=" + attribute + ", extra=" + extra + "]";
+				+ type + ", attribute=" + ability + ", extra=" + extra + "]";
 	}
 }

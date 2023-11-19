@@ -56,7 +56,7 @@
 			<td th:text="${armor.name}"></td>
 			<td th:text="${armor.ac}"></td>
 			<td th:text="${armor.dexBonus}"></td>
-			<td th:class="${armor.rarity}" th:text="${armor.rarity}"></td>
+			<td th:class="${armor.rarity.rarity}" th:text="${armor.rarity.rarity}"></td>
 			<td th:text="${armor.stealth}"></td>
 			<td th:text="${armor.type}"></td>
 			<td> <span class="spoiler" th:text="${armor.location}"></span> </td>
@@ -93,8 +93,8 @@
 			<td th:text="${weapon.damage}"></td>
 			<td th:text="${weapon.damageType}"></td>
 			<td th:text="${weapon.extra}"></td>
-			<td th:text="${weapon.attribute}"></td>
-			<td th:class="${weapon.rarity}" th:text="${weapon.rarity}"></td>
+			<td th:text="${weapon.ability.attribute}"></td>
+			<td th:class="${weapon.rarity.rarity}" th:text="${weapon.rarity.rarity}"></td>
 			<td th:text="${weapon.type}"></td>
 			<td> <span class="spoiler" th:text="${weapon.location}"></span> </td>
 			<td>

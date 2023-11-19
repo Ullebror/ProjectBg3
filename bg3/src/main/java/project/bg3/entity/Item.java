@@ -14,18 +14,13 @@ public class Item {
 	protected String description3;
 	protected String description4;
 
-	
-	public String rarity;
-
-
 	public String location;
 
 	public Item() {
 		super();
 	}
 
-	public Item(String name, String description1, String description2, String description3, String description4,
-			String rarity, String location) {
+	public Item(String name, String description1, String description2, String description3, String description4,  String location) {
 		super();
 		this.name = name;
 		this.description1 = description1;
@@ -55,10 +50,6 @@ public class Item {
 		return description4;
 	}
 
-	public String getRarity() {
-		return rarity;
-	}
-
 	public String getLocation() {
 		return location;
 	}
@@ -81,10 +72,6 @@ public class Item {
 
 	public void setDescription4(String description4) {
 		this.description4 = description4;
-	}
-
-	public void setRarity(String rarity) {
-		this.rarity = rarity;
 	}
 
 	public void setLocation(String location) {

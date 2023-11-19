@@ -53,8 +53,10 @@
 				th:field="*{description3}" /> <br /> <input size=100 type="text"
 				id="description4" th:field="*{description4}" />
 			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="rarity">Rarity</label> <input type="text" id="rarity"
-				th:field="*{rarity}" />
+			<label for="raritylist">Rarity</label>
+			<select id="raritylist" th:field="*{rarity}" class="form-control">
+				<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}"></option>
+			</select>
 			<div style="clear: both; display: block; height: 10px;"></div>
 			<label for="location">Location</label> <input type="text"
 				id="location" th:field="*{location}" />

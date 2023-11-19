@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.bg3.entity.Armor;
 import project.bg3.repository.ArmorRepository;
+import project.bg3.repository.RarityRepository;
 
 //This controller is for all things that have something to do with armor entity
 @Controller
@@ -20,7 +21,9 @@ public class ArmorController {
 
 	@Autowired
 	private ArmorRepository arepository;
-
+	@Autowired
+	private RarityRepository rrepository;
+	
 	// RESTful service to get all armor
 	@RequestMapping(value = "/armor", method = RequestMethod.GET)
 	public @ResponseBody List<Armor> armorListRest() {
@@ -39,6 +42,7 @@ public class ArmorController {
 	@RequestMapping(value = { "/addarmor" })
 	public String addArmor(Model model) {
 		model.addAttribute("armor", new Armor());
+		model.addAttribute("rarities", rrepository.findAll());
 		return "addarmor";
 	}
 
@@ -57,6 +61,7 @@ public class ArmorController {
 	@RequestMapping(value = { "/editarmor/{id}" })
 	public String editArmor(@PathVariable("id") Long armorId, Model model) {
 		model.addAttribute("armor", arepository.findById(armorId));
+		model.addAttribute("rarities", rrepository.findAll());
 		return "editarmor";
 	}
 

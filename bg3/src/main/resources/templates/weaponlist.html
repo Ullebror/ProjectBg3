@@ -57,8 +57,8 @@
 			<td th:text="${weapon.damage}"></td>
 			<td th:text="${weapon.damageType}"></td>
 			<td th:text="${weapon.extra}"></td>
-			<td th:text="${weapon.attribute}"></td>
-			<td th:class="${weapon.rarity}" th:text="${weapon.rarity}"></td>
+			<td th:text="${weapon.ability.attribute}"></td>
+			<td th:class="${weapon.rarity.rarity}" th:text="${weapon.rarity.rarity}"></td>
 			<td th:text="${weapon.type}"></td>
 			<td><span class="spoiler" th:text="${weapon.location}"></span></td>
 			<td>

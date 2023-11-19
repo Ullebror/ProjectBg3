@@ -7,8 +7,13 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
 
+import project.bg3.entity.Ability;
+import project.bg3.entity.AppUser;
+import project.bg3.entity.Rarity;
+import project.bg3.repository.AbilityRepository;
 import project.bg3.repository.AppUserRepository;
 import project.bg3.repository.ArmorRepository;
+import project.bg3.repository.RarityRepository;
 import project.bg3.repository.WeaponRepository;
 
 @SpringBootApplication
@@ -25,8 +30,23 @@ public class Bg3Application extends SpringBootServletInitializer {
 
 	@Bean
 	public CommandLineRunner bg3Demo(ArmorRepository arepository, 
-			AppUserRepository urepository, WeaponRepository wrepository) {
+			AppUserRepository urepository, WeaponRepository wrepository, AbilityRepository abilityrepository, RarityRepository rrepository) {
 		return (args) -> {
+			
+			/*abilityrepository.save(new Ability("Strength"));
+			abilityrepository.save(new Ability("Dexterity"));
+			abilityrepository.save(new Ability("Constitution"));
+			abilityrepository.save(new Ability("Intelligence"));
+			abilityrepository.save(new Ability("Wisdom"));
+			abilityrepository.save(new Ability("Charisma"));
+			abilityrepository.save(new Ability("Spellcasting mod"));
+			
+			rrepository.save(new Rarity("Legendary"));
+			rrepository.save(new Rarity("Very Rare"));
+			rrepository.save(new Rarity("Rare"));
+			rrepository.save(new Rarity("Uncommon"));
+			rrepository.save(new Rarity("Common")); */
+			
 
 			/*arepository.save(new Armor("Helldusk Armour",
 					"Helldusk armour: You are considered Proficient with this armour while wearing it.",

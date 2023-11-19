@@ -14,6 +14,5 @@ import project.bg3.entity.Armor;
 public interface ArmorRepository extends CrudRepository<Armor, Long> {
 	List<Armor> findByid(@Param("id") Long id);
 	List<Armor> findByName(@Param("name") String name);
-	List<Armor> findByRarity(@Param("rarity") String rarity);
 	List<Armor> findByAc(@Param("ac") int ac);
 }
