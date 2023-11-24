@@ -25,7 +25,7 @@ public class UserDetailServiceImpl implements UserDetailsService {
 	public AppUser registerNewUserAccount(UserDto userDto) throws AppUserAlreadyExistsAuthenticationException {
 		if (usernameExists(userDto.getUsername())) {
 			throw new AppUserAlreadyExistsAuthenticationException(
-					"There is an account with that email address: " + userDto.getUsername());
+					"There is an account with that username: " + userDto.getUsername());
 		}
 
 		 AppUser user = new AppUser();

@@ -65,10 +65,16 @@ public class WeaponController {
 		@PreAuthorize("hasAuthority('ADMIN')")
 		@RequestMapping(value = { "/editweapon/{id}" })
 		public String editWeapon(@PathVariable("id") Long weaponId, Model model) {
-			model.addAttribute("weapon", wrepository.findById(weaponId));
-			model.addAttribute("rarities", rrepository.findAll());
-			model.addAttribute("abilities", arepository.findAll());
-			return "editweapon";
+			boolean exists = wrepository.existsById(weaponId);
+			if (exists) {
+				model.addAttribute("weapon", wrepository.findById(weaponId));
+				model.addAttribute("rarities", rrepository.findAll());
+				model.addAttribute("abilities", arepository.findAll());
+				return "editweapon";	
+			} else {
+				return "redirect:../itemlist";	
+			}
+			
 		}
 
 		// PreAuthorize protects from users that should only have viewing rights. links

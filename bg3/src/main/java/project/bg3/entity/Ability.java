@@ -18,6 +18,7 @@ import jakarta.persistence.Table;
 public class Ability {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(updatable = false)
 	protected Long id;
 
 	@Column(nullable = false)

@@ -8,4 +8,6 @@ import project.bg3.entity.Ability;
 @RepositoryRestResource
 public interface AbilityRepository extends CrudRepository<Ability, Long> {
 
+	Ability findByAttribute(String string);
+
 }

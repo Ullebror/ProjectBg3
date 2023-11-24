@@ -60,9 +60,15 @@ public class ArmorController {
 	@PreAuthorize("hasAuthority('ADMIN')")
 	@RequestMapping(value = { "/editarmor/{id}" })
 	public String editArmor(@PathVariable("id") Long armorId, Model model) {
-		model.addAttribute("armor", arepository.findById(armorId));
-		model.addAttribute("rarities", rrepository.findAll());
-		return "editarmor";
+		boolean exists = arepository.existsById(armorId);
+		if(exists) {
+			model.addAttribute("armor", arepository.findById(armorId));
+			model.addAttribute("rarities", rrepository.findAll());
+			return "editarmor";	
+		} else {	
+			return "redirect:../itemlist";
+		}
+		
 	}
 
 	// deletes an armor

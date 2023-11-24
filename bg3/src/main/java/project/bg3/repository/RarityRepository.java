@@ -7,5 +7,7 @@ import project.bg3.entity.Rarity;
 
 @RepositoryRestResource
 public interface RarityRepository extends CrudRepository<Rarity, Long> {
+
+	Rarity findByRarity(String string);
 	
 }

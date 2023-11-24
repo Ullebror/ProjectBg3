@@ -15,6 +15,7 @@ public class Armor extends Item {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
+	@Column(updatable = false)
 	protected Long id;
 	
 	@ManyToOne
