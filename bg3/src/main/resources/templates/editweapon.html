@@ -31,38 +31,55 @@
 		</div>
 	</nav>
 	<h1>Edit Weapon</h1>
-	<div>
+	<div class="formdiv">
 		<form th:object="${weapon}" th:action="@{../saveweapon}" action="#" method="post">
 			<label for="id"></label> <input type="hidden" id="id" class="form-control" th:field="*{id}"
 				readonly="readonly" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="name">Name</label> <input type="text" id="name" th:field="*{name}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="damage">Damage</label> <input type="text" id="damage" th:field="*{damage}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="extra">Extra Damage</label> <input type="text" id="extra" th:field="*{extra}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="damageType">Damage Type</label> <input type="text" id="damageType" th:field="*{damageType}" />
-			<div style="clear: both; display: table; height: 10px;"></div>
-			<label for="Features">Features</label> <input size=100 type="text" id="description1"
-				th:field="*{description1}" /> <br /> <input size=100 type="text" id="description2"
-				th:field="*{description2}" />
-			<br /> <input size=100 type="text" id="description3" th:field="*{description3}" /> <br /> <input size=100
-				type="text" id="description4" th:field="*{description4}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="raritylist">Rarity</label>
-			<select id="raritylist" th:field="*{rarity}" class="form-control" width="100px">
-				<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}"></option>
-			</select>
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="location">Location</label> <input type="text" id="location" th:field="*{location}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="type">Type</label> <input type="text" id="type" th:field="*{type}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="abilitylist">Attribute</label>
-			<select id="abilitylist" th:field="*{ability}" class="form-control" width="100px">
-				<option th:each="ability: ${abilities}" th:value="${ability.id}" th:text="${ability.attribute}">
-				</option> <br /> <input type="submit" value="Update" />
+			<div class="form-group">
+				<label for="name">Name:</label> <br /> <input size="100" type="text" id="name" th:field="*{name}" />
+			</div>
+			<div class="form-group">
+				<label for="damage">Damage:</label> <br /> <input class=size="100" type="text" id="damage"
+					th:field="*{damage}" />
+			</div>
+			<div class="form-group">
+				<label for="extra">Extra Damage:</label> <br /> <input size="100" type="text" id="extra"
+					th:field="*{extra}" />
+			</div>
+			<div class="form-group">
+				<label for="damageType">Damage Type:</label> <br /> <input size="100" type="text" id="damageType"
+					th:field="*{damageType}" />
+			</div>
+			<div class="form-group">
+				<label for="Features">Features:</label> <br /> <textarea class="form-control" type="text"
+					id="description1" th:field="*{description1}" /> <br /> <textarea class="form-control" type="text"
+					id="description2" th:field="*{description2}" />
+				<br /> <textarea class="form-control" type="text" id="description3" th:field="*{description3}" /> <br />
+				<textarea class="form-control" type="text" id="description4" th:field="*{description4}" />
+			</div>
+			<div class="form-group">
+				<label for="raritylist">Rarity:</label> <br />
+				<select id="raritylist" th:field="*{rarity}" width="100px">
+					<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}">
+						Rarity</option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="location">Location:</label> <br /> <input size="100" type="text" id="location"
+					th:field="*{location}" />
+			</div>
+			<div class="form-group">
+				<label for="type">Type:</label> <br /> <input size="100" type="text" id="type" th:field="*{type}" />
+			</div>
+			<div class="form-group">
+				<label for="abilitylist">Attribute:</label> <br />
+				<select id="abilitylist" th:field="*{ability}" width="100px">
+					<option th:each="ability: ${abilities}" th:value="${ability.id}" th:text="${ability.attribute}">
+						Ability</option>
+				</select>
+			</div>
+			<br />
+			<input type="submit" value="Update" />
 
 		</form>
 	</div>

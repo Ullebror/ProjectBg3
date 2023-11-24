@@ -31,33 +31,42 @@
 		</div>
 	</nav>
 	<h1>Edit Armour</h1>
-	<div>
+	<div class="formdiv">
 		<form th:object="${armor}" th:action="@{../savearmor}" action="#" method="post">
 			<label for="id"></label> <input type="hidden" id="id" class="form-control" th:field="*{id}"
 				readonly="readonly" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="name">Name</label> <input type="text" id="name" th:field="*{name}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="ac">Armour Class</label> <input type="text" id="ac" th:field="*{ac}" />
-			<div style="clear: both; display: table; height: 10px;"></div>
-			<label for="Features">Features</label> <input size=100 type="text" id="description1"
-				th:field="*{description1}" /> <br /> <input size=100 type="text" id="description2"
-				th:field="*{description2}" />
-			<br /> <input size=100 type="text" id="description3" th:field="*{description3}" /> <br /> <input size=100
-				type="text" id="description4" th:field="*{description4}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="raritylist">Rarity</label>
-			<select id="raritylist" th:field="*{rarity}" class="form-control" width="100px">
-				<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}"></option>
-			</select>
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="location">Location</label> <input type="text" id="location" th:field="*{location}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="type">Type</label> <input type="text" id="type" th:field="*{type}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="dexBonus">Dex Bonus</label> <input type="text" id="dexBonus" th:field="*{dexBonus}" />
-			<div style="clear: both; display: block; height: 10px;"></div>
-			<label for="stealth">Stealth disadv</label><input type="text" id="stealth" th:field="*{stealth}" /> <br />
+			<div class="form-group">
+				<label for="name">Name:</label> <br /> <br /> <input size="100" type="text" id="name" th:field="*{name}" />
+			</div>
+			<div class="form-group">
+				<label for="ac">Armour Class:</label> <br /> <input type="text" id="ac" th:field="*{ac}" />
+			</div>
+			<div class="form-group">
+				<label for="Features">Features:</label> <br /> <textarea class="form-control" type="text"
+					id="description1" th:field="*{description1}" /> <br /> <textarea class="form-control" type="text"
+					id="description2" th:field="*{description2}" />
+				<br /> <textarea class="form-control" type="text" id="description3" th:field="*{description3}" /> <br />
+				<textarea class="form-control" type="text" id="description4" th:field="*{description4}" />
+			</div>
+			<div class="form-group">
+				<label for="raritylist">Rarity:</label> <br />
+				<select id="raritylist" th:field="*{rarity}" class="form-control" width="100px">
+					<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}"></option>
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="location">Location:</label> <br /> <input type="text" id="location" th:field="*{location}" />
+			</div>
+			<div class="form-group">
+				<label for="type">Type:</label> <br /> <input type="text" id="type" th:field="*{type}" />
+			</div>
+			<div class="form-group">
+				<label for="dexBonus">Dex Bonus:</label> <br /> <input type="text" id="dexBonus" th:field="*{dexBonus}" />
+			</div>
+			<div class="form-group">
+				<label for="stealth">Stealth disadv:</label> <br /> <input type="text" id="stealth" th:field="*{stealth}" />
+			</div>
+			<br />
 			<input type="submit" value="Update" />
 
 		</form>

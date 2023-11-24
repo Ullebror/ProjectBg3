@@ -44,11 +44,10 @@
 	text-shadow: 1px 1px 1px black;
 }
 
-form {
-  margin:auto;
-}
+
 
 .formdiv {
+	margin: 10px;
 	display:flex;
 	
 }
