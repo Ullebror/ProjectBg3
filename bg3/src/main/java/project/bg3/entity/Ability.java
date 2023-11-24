@@ -21,7 +21,7 @@ public class Ability {
 	@Column(updatable = false)
 	protected Long id;
 
-	@Column(nullable = false)
+	@Column(unique = true)
 	private String attribute;
 	
 	@JsonIgnore

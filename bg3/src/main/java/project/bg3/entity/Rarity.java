@@ -20,7 +20,7 @@ public class Rarity {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(updatable = false)
 	protected Long id;
-	
+	@Column(unique = true)
 	private String rarity;
 	
 	@JsonIgnore
