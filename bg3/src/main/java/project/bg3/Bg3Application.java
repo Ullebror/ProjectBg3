@@ -70,8 +70,7 @@ public class Bg3Application extends SpringBootServletInitializer {
 					"ADMIN");
 			urepository.save(user1);
 			urepository.save(user2); */
-			AppUser user1 = new AppUser("Ullebror","$2a$12$RbxJ6oXdRSV88ThZCOzOf.t2hiTAc2WJ9gDFqYDiWRV2Tk9yRgx0O", "ADMIN");
-			urepository.save(user1);
+			
 
 		};
 
