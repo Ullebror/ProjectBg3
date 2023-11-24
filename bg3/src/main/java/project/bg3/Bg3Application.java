@@ -33,7 +33,7 @@ public class Bg3Application extends SpringBootServletInitializer {
 			AppUserRepository urepository, WeaponRepository wrepository, AbilityRepository abilityrepository, RarityRepository rrepository) {
 		return (args) -> {
 			
-			abilityrepository.save(new Ability("Strength"));
+			/*abilityrepository.save(new Ability("Strength"));
 			abilityrepository.save(new Ability("Dexterity"));
 			abilityrepository.save(new Ability("Constitution"));
 			abilityrepository.save(new Ability("Intelligence"));
@@ -45,7 +45,7 @@ public class Bg3Application extends SpringBootServletInitializer {
 			rrepository.save(new Rarity("Very Rare"));
 			rrepository.save(new Rarity("Rare"));
 			rrepository.save(new Rarity("Uncommon"));
-			rrepository.save(new Rarity("Common"));
+			rrepository.save(new Rarity("Common")); */
 			
 
 			/*arepository.save(new Armor("Helldusk Armour",
