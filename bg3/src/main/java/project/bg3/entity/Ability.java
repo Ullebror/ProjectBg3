@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name = "abilities")
@@ -22,6 +23,7 @@ public class Ability {
 	protected Long id;
 
 	@Column(unique = true)
+	@NotEmpty
 	private String attribute;
 	
 	@JsonIgnore

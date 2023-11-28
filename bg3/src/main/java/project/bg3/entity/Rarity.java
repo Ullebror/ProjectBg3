@@ -12,6 +12,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 @Entity
 @Table(name="rarities")
@@ -21,6 +22,7 @@ public class Rarity {
 	@Column(updatable = false)
 	protected Long id;
 	@Column(unique = true)
+	@NotEmpty
 	private String rarity;
 	
 	@JsonIgnore

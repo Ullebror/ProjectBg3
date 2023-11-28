@@ -9,6 +9,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
 
 
 
@@ -21,17 +22,24 @@ public class Weapon extends Item {
 	@Column(updatable = false)
 	protected Long id;
 	
+	@Column(nullable = false)
+	@NotEmpty
+	private String name;
+	
 	@ManyToOne
 	@JoinColumn(name = "rarityid")
 	private Rarity rarity;
 	
 	@Column(nullable = false)
+	@NotEmpty
 	private String damage;
 	
 	@Column(nullable = false)
+	@NotEmpty
 	private String damageType;
 	
 	@Column(nullable = false)
+	@NotEmpty
 	private String type;
 	
 	@ManyToOne
@@ -66,6 +74,14 @@ public class Weapon extends Item {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public Rarity getRarity() {

@@ -8,6 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "armor")
@@ -18,20 +20,32 @@ public class Armor extends Item {
 	@Column(updatable = false)
 	protected Long id;
 	
+	@Column(nullable = false)
+	@NotNull
+	@NotEmpty
+	private String name;
+	
 	@ManyToOne
 	@JoinColumn(name = "rarityid")
 	private Rarity rarity;
 
 	@Column(nullable = false)
+	@NotNull
 	private int ac;
 
 	@Column(nullable = false)
+	@NotNull
+	@NotEmpty
 	private String dexBonus;
 
 	@Column(nullable = false)
+	@NotNull
+	@NotEmpty
 	private String stealth;
 
 	@Column(nullable = false)
+	@NotNull
+	@NotEmpty
 	private String type;
 	
 	
@@ -43,6 +57,7 @@ public class Armor extends Item {
 	public Armor(String name, String description1, String description2, String description3, String description4,
 			Rarity rarity, String location, int ac, String dexBonus, String stealth, String type) {
 		super();
+		this.name = name;
 		this.ac = ac;
 		this.stealth = stealth;
 		this.type = type;
@@ -56,6 +71,14 @@ public class Armor extends Item {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 	
 	public Rarity getRarity() {
