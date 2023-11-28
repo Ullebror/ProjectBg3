@@ -27,6 +27,14 @@
 					<a class="nav-link" th:href="@{/weaponlist}">Weapons</a> <a
 						class="nav-link" th:href="@{/armorlist}">Armour</a>
 				</div>
+				<div>
+					<form th:object="${keyword}" th:action="@{/search}" action="#" method="post">
+						<label for="Search"></label>
+						<input type="text" name="keyword" th:value="${keyword}">
+						<input type="submit" value="Search">
+					</form>
+					
+				</div>
 				<div class="mx-auto">
 					<a sec:authorize="hasAuthority('ADMIN')" href="/addarmor"
 						class="btn btn-success">Add Armour</a>

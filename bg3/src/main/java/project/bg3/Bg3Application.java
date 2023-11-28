@@ -8,7 +8,6 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 import org.springframework.context.annotation.Bean;
 
 import project.bg3.entity.Ability;
-import project.bg3.entity.AppUser;
 import project.bg3.entity.Rarity;
 import project.bg3.repository.AbilityRepository;
 import project.bg3.repository.AppUserRepository;

@@ -3,6 +3,7 @@ package project.bg3.web;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,17 +24,29 @@ public class ArmorController {
 	private ArmorRepository arepository;
 	@Autowired
 	private RarityRepository rrepository;
-	
+
+
 	// RESTful service to get all armor
 	@RequestMapping(value = "/armor", method = RequestMethod.GET)
 	public @ResponseBody List<Armor> armorListRest() {
 		return (List<Armor>) arepository.findAll();
 	}
 
+	//Search functionality for armor page
+	@RequestMapping(value = { "/search" }, method = RequestMethod.POST)
+	public String searchArmor(Model model, @Param("keyword") String keyword) {
+		model.addAttribute("armors", arepository.findAllArmor(keyword));
+		model.addAttribute("keyword", keyword);
+		return "armorlist";
+	}
+	
+
 	// showing only armours as a table
 	@RequestMapping(value = { "/armorlist" })
 	public String armorList(Model model) {
+
 		model.addAttribute("armors", arepository.findAll());
+
 		return "armorlist";
 	}
 
@@ -61,14 +74,14 @@ public class ArmorController {
 	@RequestMapping(value = { "/editarmor/{id}" })
 	public String editArmor(@PathVariable("id") Long armorId, Model model) {
 		boolean exists = arepository.existsById(armorId);
-		if(exists) {
+		if (exists) {
 			model.addAttribute("armor", arepository.findById(armorId));
 			model.addAttribute("rarities", rrepository.findAll());
-			return "editarmor";	
-		} else {	
+			return "editarmor";
+		} else {
 			return "redirect:../itemlist";
 		}
-		
+
 	}
 
 	// deletes an armor
