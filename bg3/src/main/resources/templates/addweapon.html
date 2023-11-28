@@ -34,17 +34,20 @@
 	<div class="formdiv">
 		<form th:object="${weapon}" th:action="@{../saveweapon}" action="#" method="post">
 			<div class="form-group">
-				<label for="name">Name:</label> <br /> <input size="100" type="text" id="name" th:field="*{name}" />
-			</div>
+				<label for="name">Name:</label> <br /> <input size="100" type="text" id="name" th:field="*{name}" required />
+			</div><small
+					class="text-danger" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></small>
 			<div class="form-group">
-				<label for="damage">Damage:</label> <br /> <input class=size="100" type="text" id="damage" th:field="*{damage}" />
+				<label for="damage">Damage:</label> <br /> <input class=size="100" type="text" id="damage" th:field="*{damage}" required /><small
+					class="text-danger" th:if="${#fields.hasErrors('damage')}" th:errors="*{damage}"></small>
 			</div>
 			<div class="form-group">
 				<label for="extra">Extra Damage:</label> <br /> <input size="100" type="text" id="extra" th:field="*{extra}" />
 			</div>
 			<div class="form-group">
 				<label for="damageType">Damage Type:</label> <br /> <input size="100" type="text" id="damageType"
-					th:field="*{damageType}" />
+					th:field="*{damageType}" required /> <small
+					class="text-danger" th:if="${#fields.hasErrors('damageType')}" th:errors="*{damageType}"></small>
 			</div>
 			<div class="form-group">
 				<label for="Features">Features:</label> <br /> <textarea class="form-control"  type="text" id="description1"
@@ -55,23 +58,27 @@
 			</div>
 			<div class="form-group">
 				<label for="raritylist">Rarity:</label> <br />
-				<select id="raritylist" th:field="*{rarity}" width="100px">
-					<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}">
+				<select id="raritylist" th:field="*{rarity}" width="100px" required>
+					<option value="">----</option>
+					<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}" >
 						Rarity</option>
-				</select>
+				</select><small class="text-danger" th:if="${#fields.hasErrors('rarity')}"
+					th:errors="*{rarity}"></small>
 			</div>
 			<div class="form-group">
 				<label for="location">Location:</label> <br /> <input size="100" type="text" id="location" th:field="*{location}" />
 			</div>
 			<div class="form-group">
-				<label for="type">Type:</label> <br /> <input size="100" type="text" id="type" th:field="*{type}" />
-			</div>
+				<label for="type">Type:</label> <br /> <input size="100" type="text" id="type" th:field="*{type}" required/>
+			</div><small class="text-danger" th:if="${#fields.hasErrors('type')}"
+					th:errors="*{type}"></small>
 			<div class="form-group">
 				<label for="abilitylist">Attribute:</label> <br />
-				<select id="abilitylist" th:field="*{ability}" width="100px">
+				<select id="abilitylist" th:field="*{ability}" width="100px" required>
 					<option th:each="ability: ${abilities}" th:value="${ability.id}" th:text="${ability.attribute}">
 						Ability</option>
-				</select>
+				</select> <small class="text-danger" th:if="${#fields.hasErrors('ability')}"
+					th:errors="*{ability}"></small>
 			</div>
 			<br />
 			<input type="submit" value="Add" />

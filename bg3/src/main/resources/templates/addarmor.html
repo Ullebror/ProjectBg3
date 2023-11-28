@@ -34,11 +34,13 @@
 	<div class="formdiv">
 		<form th:object="${armor}" th:action="@{savearmor}" action="#" method="post">
 			<div class="form-group">
-				<label for="name">Name:</label> <br /> <br /> <input size="100" type="text" id="name"
-					th:field="*{name}" />
+				<label for="name">Name:</label> <br /> <br /> <input size="100" type="text" id="name" th:field="*{name}"
+					required /><small class="text-danger" th:if="${#fields.hasErrors('name')}"
+					th:errors="*{name}"></small>
 			</div>
 			<div class="form-group">
-				<label for="ac">Armour Class:</label> <br /> <input type="text" id="ac" th:field="*{ac}" />
+				<label for="ac">Armour Class:</label> <br /> <input type="text" id="ac" th:field="*{ac}" required /><small
+					class="text-danger" th:if="${#fields.hasErrors('ac')}" th:errors="*{ac}"></small>
 			</div>
 			<div class="form-group">
 				<label for="Features">Features:</label> <br /> <textarea class="form-control" type="text"
@@ -49,24 +51,29 @@
 			</div>
 			<div class="form-group">
 				<label for="raritylist">Rarity:</label> <br />
-				<select id="raritylist" th:field="*{rarity}" class="form-control" width="100px">
+				<select id="raritylist" th:field="*{rarity}" class="form-control" width="100px" required>
+					<option value="">----</option>
 					<option th:each="rarity: ${rarities}" th:value="${rarity.id}" th:text="${rarity.rarity}"></option>
-				</select>
+				</select><small class="text-danger" th:if="${#fields.hasErrors('rarity')}"
+					th:errors="*{rarity}"></small>
 			</div>
 			<div class="form-group">
 				<label for="location">Location:</label> <br /> <input type="text" id="location"
 					th:field="*{location}" />
 			</div>
 			<div class="form-group">
-				<label for="type">Type:</label> <br /> <input type="text" id="type" th:field="*{type}" />
+				<label for="type">Type:</label> <br /> <input type="text" id="type" th:field="*{type}" required /><small
+					class="text-danger" th:if="${#fields.hasErrors('type')}" th:errors="*{type}"></small>
 			</div>
 			<div class="form-group">
 				<label for="dexBonus">Dex Bonus:</label> <br /> <input type="text" id="dexBonus"
-					th:field="*{dexBonus}" />
+					th:field="*{dexBonus}" required /><small class="text-danger" th:if="${#fields.hasErrors('name')}"
+					th:errors="*{name}"></small>
 			</div>
 			<div class="form-group">
 				<label for="stealth">Stealth disadv:</label> <br /> <input type="text" id="stealth"
-					th:field="*{stealth}" />
+					th:field="*{stealth}" required /><small class="text-danger" th:if="${#fields.hasErrors('name')}"
+					th:errors="*{name}"></small>
 			</div>
 			<br />
 			<input type="submit" value="Add" />
